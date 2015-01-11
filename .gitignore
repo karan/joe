@@ -55,3 +55,4 @@ target/
 
 # Custon
 dev/
+.DS_Store

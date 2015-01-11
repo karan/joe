@@ -23,5 +23,15 @@ def list():
 #         click.echo('Hello %s!' % name)
 
 
-# if __name__ == '__main__':
-#     ls_or_list()
+@click.group()
+def cli():
+    '''Joe generates .gitignore files from the command line for you.'''
+    pass
+
+
+cli.add_command(ls)
+cli.add_command(list)
+
+
+if __name__ == '__main__':
+    cli()

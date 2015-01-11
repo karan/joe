@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='joe',
@@ -8,19 +8,19 @@ setup(
     description='A .gitignore magician in your command line.',
     author='Karan Goel',
     license='MIT',
-    keywords = "gitignore command line cli",
+    keywords="gitignore command line cli",
     author_email='karan@goel.io',
     url='http://github.com/karan/joe',
-    include_package_data=True,
-    package_data = {
-        'src': ['data/*.gitignore']
+    packages=find_packages(),
+    package_data={
+        'joe': ['data/*.gitignore']
     },
     install_requires=[
         "click==3.3",
     ],
-    entry_points = {
+    entry_points={
         'console_scripts': [
-            'joe = joe.src:cli'
+            'joe=joe.joe:main'
         ],
     }
 )
