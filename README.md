@@ -39,17 +39,20 @@ $ python setup.py install
 
 ### Basic usage
 
-If there is an existing `.gitignore` file, appends the new file to it. Otherwise, makes a new `.gitignore` file.
 
 ```bash
-$ joe java    # saves or appends the .gitignore file for java language
+$ joe java    # outputs .gitignore file for java language to stdout
 ```
 
-### Overwrite existing file
+### Overwrite existing `.gitignore` file
 
 ```bash
-$ joe -o java    # saves a new .gitignore file for java language
+$ joe java > .gitignore    # saves a new .gitignore file for java language
 ```
+
+### Append to existing `.gitignore` file
+
+$ joe java >> .gitignore    # appends new .gitignore file for java language
 
 ### Multiple languages
 
@@ -70,11 +73,5 @@ $ joe list
 Output:
 
 ```bash
-Output goes here
-```
-
-### View the output
-
-```bash
-$ joe -v java    # prints the .gitignore file for java language
+> actionscript, ada, agda, android, appceleratortitanium, archlinuxpackages, autotools, c++, c, cakephp, cfwheels, chefcookbook, clojure, cmake, codeigniter, commonlisp, composer, concrete5, coq, craftcms, dart, delphi, dm, drupal, eagle, elisp, elixir, episerver, erlang, expressionengine, extjs, fancy, finale, forcedotcom, fortran, fuelphp, gcov, gitbook, go, gradle, grails, gwt, haskell, idris, igorpro, java, jboss, jekyll, joomla, jython, kohana, labview, laravel, leiningen, lemonstand, lilypond, lithium, lua, magento, maven, mercury, metaprogrammingsystem, meteor, nanoc, nim, node, objective-c, ocaml, opa, opencart, oracleforms, packer, perl, phalcon, playframework, plone, prestashop, processing, python, qooxdoo, qt, r, rails, rhodesrhomobile, ros, ruby, rust, sass, scala, scons, scrivener, sdcc, seamgen, sketchup, stella, sugarcrm, swift, symfony, symphonycms, tex, textpattern, turbogears2, typo3, umbraco, unity, visualstudio, vvvv, waf, wordpress, xojo, yeoman, yii, zendframework, zephir
 ```
