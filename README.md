@@ -1,8 +1,8 @@
-# joe
-
 ![](http://i.imgur.com/y8g506n.png?1)
 
-Joe generates `.gitignore` files from the command line for you.
+# joe
+
+A .gitignore magician in your command line. Joe generates `.gitignore` files from the command line for you.
 
 ## Features
 
