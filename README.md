@@ -52,7 +52,9 @@ $ joe java > .gitignore    # saves a new .gitignore file for java language
 
 ### Append to existing `.gitignore` file
 
+```bash
 $ joe java >> .gitignore    # appends new .gitignore file for java language
+```
 
 ### Multiple languages
 
@@ -72,6 +74,4 @@ $ joe list
 
 Output:
 
-```bash
 > actionscript, ada, agda, android, appceleratortitanium, archlinuxpackages, autotools, c++, c, cakephp, cfwheels, chefcookbook, clojure, cmake, codeigniter, commonlisp, composer, concrete5, coq, craftcms, dart, delphi, dm, drupal, eagle, elisp, elixir, episerver, erlang, expressionengine, extjs, fancy, finale, forcedotcom, fortran, fuelphp, gcov, gitbook, go, gradle, grails, gwt, haskell, idris, igorpro, java, jboss, jekyll, joomla, jython, kohana, labview, laravel, leiningen, lemonstand, lilypond, lithium, lua, magento, maven, mercury, metaprogrammingsystem, meteor, nanoc, nim, node, objective-c, ocaml, opa, opencart, oracleforms, packer, perl, phalcon, playframework, plone, prestashop, processing, python, qooxdoo, qt, r, rails, rhodesrhomobile, ros, ruby, rust, sass, scala, scons, scrivener, sdcc, seamgen, sketchup, stella, sugarcrm, swift, symfony, symphonycms, tex, textpattern, turbogears2, typo3, umbraco, unity, visualstudio, vvvv, waf, wordpress, xojo, yeoman, yii, zendframework, zephir
-```
