@@ -2,7 +2,7 @@
 
 ![](http://i.imgur.com/y8g506n.png?1)
 
-Joe generates `.gitignore` files from the command line.
+Joe generates `.gitignore` files from the command line for you.
 
 ## Features
 
@@ -11,6 +11,29 @@ Joe generates `.gitignore` files from the command line.
 - Stupidly easy to use
 - Supports att Github-supported `.gitignore` files
 - Warns if target directory isn't a git repo
+- Works on Mac, Linux and Windows
+
+## Installation
+
+### Option 1: Homebrew
+
+```bash
+$ brew install gitignore
+```
+
+### Option 2: Pip
+
+```bash
+$ pip install joe
+```
+
+### Option 2: From source
+
+```bash
+$ git clone git@github.com:karan/joe.git
+$ cd joe/
+$ python setup.py install
+```
 
 ## Usage
 
