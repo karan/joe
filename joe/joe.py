@@ -4,19 +4,20 @@ import click
 
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
-def get_data_dir(path):
+def _get_data_dir(path):
+    '''Returns the path to the directory matching the passed `path`.'''
     return os.path.dirname(os.path.join(_ROOT, 'data', path))
 
 
 # Where all gitignore files are
-DATA_DIR = get_data_dir('*.gitignore')
-
+DATA_DIR = _get_data_dir('*.gitignore')
 # Load up names for all gitignore files
-GITIGNORE = [f.replace('.gitignore', '').lower() for f in next(os.walk(DATA_DIR))[2]]
+GITIGNORE = [f.replace('.gitignore', '').lower() \
+                for f in next(os.walk(DATA_DIR))[2]]
 
 
 def _print_filenames():
-    # Prints a comma-separated list of all gitignore files we have
+    '''Prints a comma-separated list of all gitignore files we have.'''
     click.echo(GITIGNORE[0], nl=False)
     for f in GITIGNORE[1:]:
         click.echo(', ', nl=False)
@@ -32,16 +33,6 @@ def ls():
 @click.command(name='list', help='List all available .gitignore files.')
 def list():
     _print_filenames()
-
-
-# @click.command()
-# @click.option('--count', default=1, help='Number of greetings.')
-# @click.option('--name', prompt='Your name',
-#               help='The person to greet.')
-# def hello(count, name):
-#     """Simple program that greets NAME for a total of COUNT times."""
-#     for x in range(count):
-#         click.echo('Hello %s!' % name)
 
 
 @click.group()
