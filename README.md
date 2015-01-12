@@ -7,9 +7,9 @@ A .gitignore magician in your command line. Joe generates `.gitignore` files fro
 ## Features
 
 - Written in uncomplicated Python
-- Easy to install
-- Stupidly easy to use
-- Supports all Github-supported `.gitignore` files
+- Easy to [install](https://github.com/karan/joe#installation)
+- Stupidly [easy to use](https://github.com/karan/joe#usage)
+- Supports all Github-supported [`.gitignore` files](https://github.com/karan/joe#list-all-available-files)
 - Works on Mac, Linux and Windows
 
 ## Installation
