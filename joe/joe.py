@@ -1,7 +1,25 @@
+"""Joe.
+
+Joe generates .gitignore files from the command line for you
+
+Usage:
+  joe (ls | list)
+  joe [NAME...]
+  joe (-h | --help)
+  joe --version
+
+Options:
+  -h --help        Show this screen.
+  --version     Show version.
+
+"""
+
+# import argparse
 import os
 import sys
 
-import click
+from docopt import docopt
+# import click
 
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -18,42 +36,72 @@ GITIGNORE_RAW = [f.replace('.gitignore', '') \
 GITIGNORE = [f.lower() for f in GITIGNORE_RAW]
 
 
+# class PrintFilenamesAction(argparse.Action):
+#     '''Prints a comma-separated list of all gitignore files we have.'''
+
+#     def __init__(self, option_strings, dest, nargs=None, **kwargs):
+#         if nargs is not None:
+#             raise ValueError("nargs not allowed")
+#         super(PrintFilenamesAction, self).__init__(option_strings, dest, **kwargs)
+
+    
+    
+#     def __call__(self, parser, namespace, values, option_string=None):
+#         _print_filenames()
+
+
+# @click.command(name='ls', help='List all available .gitignore files.')
+# def ls():
+#     _print_filenames()
+
+
+# @click.command(name='list', help='List all available .gitignore files.')
+# def list():
+#     _print_filenames()
+
+
+# # @click.command(help='Output the .gitignore for passed languages.')
+# # @click.argument('langs', nargs=-1, type=click.Path())
+# # def generate(langs):
+# #     '''Generates and sends the gitignore contents to stdout.'''
+# #     output = '# Joe made this: https://goel.io/joe\n'
+# #     filepath = os.path.join(DATA_DIR, GITIGNORE_RAW[GITIGNORE.index(name)] + '.gitignore')
+# #     click.echo(langs)
+
+
+# @click.group()
+# def known_cli():
+#     '''Joe generates .gitignore files from the command line for you.'''
+#     pass
+
+# known_cli.add_command(ls)
+# known_cli.add_command(list)
+
+
 def _print_filenames():
-    '''Prints a comma-separated list of all gitignore files we have.'''
-    click.echo(GITIGNORE[0], nl=False)
-    for f in GITIGNORE[1:]:
-        click.echo(', ', nl=False)
-        click.echo(f, nl=False)
-    click.echo()
+    '''List all available .gitignore files.'''
+    print ', '.join(GITIGNORE)
 
 
-@click.command(name='ls', help='List all available .gitignore files.')
-def ls():
-    _print_filenames()
-
-
-@click.command(name='list', help='List all available .gitignore files.')
-def list():
-    _print_filenames()
-
-
-# @click.command(help='Output the .gitignore for passed languages.')
-# @click.argument('langs', nargs=-1, type=click.Path())
-# def generate(langs):
-#     '''Generates and sends the gitignore contents to stdout.'''
-#     output = '# Joe made this: https://goel.io/joe\n'
-#     filepath = os.path.join(DATA_DIR, GITIGNORE_RAW[GITIGNORE.index(name)] + '.gitignore')
-#     click.echo(langs)
-
-
-@click.group()
-def known_cli():
-    '''Joe generates .gitignore files from the command line for you.'''
-    pass
-
-known_cli.add_command(ls)
-known_cli.add_command(list)
+def _handle_gitignores(names):
+    '''Generates and sends the gitignore contents to stdout.'''
+    output = '# Joe made this: https://goel.io/joe\n'
+    for name in names:
+        raw_name = GITIGNORE_RAW[GITIGNORE.index(name)]
+        output += '\n#####=== %s ===#####\n' % raw_name
+        filepath = os.path.join(DATA_DIR, raw_name + '.gitignore')
+        output += '\n'
+        with open(filepath) as f:
+            output += f.read()
+    print output
 
 
 if __name__ == '__main__':
-    cli()
+
+    arguments = docopt(__doc__, version='Joe 0.0.0')
+    # print(arguments)
+
+    if (arguments['ls'] or arguments['list']):
+        _print_filenames()
+    else:
+        _handle_gitignores(arguments['NAME'])
