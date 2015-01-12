@@ -16,9 +16,8 @@ A .gitignore magician in your command line. Joe generates `.gitignore` files fro
 
 ### Option 1: Homebrew
 
-**Doesn't work right now**
-
 ```bash
+$ brew tap karan/karan
 $ brew install gitignore
 ```
 
