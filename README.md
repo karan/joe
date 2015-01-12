@@ -60,7 +60,7 @@ $ joe java >> .gitignore    # appends new .gitignore file for java
 ### Multiple languages
 
 ```bash
-$ joe java javascript python > .gitignore    # saves a new .gitignore file for multiple languages
+$ joe java node python > .gitignore    # saves a new .gitignore file for multiple languages
 ```
 
 ### List all available files
