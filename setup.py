@@ -4,12 +4,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='joe',
-    version='0.0.0',
-    description='A .gitignore magician in your command line.',
+    version='0.0.1',
+    description='joe generates .gitignore files from the command line for you.',
     author='Karan Goel',
+    author_email='karan@goel.io',
     license='MIT',
     keywords="gitignore command line cli",
-    author_email='karan@goel.io',
     url='http://github.com/karan/joe',
     packages=find_packages(),
     package_data={

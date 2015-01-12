@@ -71,7 +71,7 @@ def _handle_gitignores(names):
 
 
 def main():
-    arguments = docopt(__doc__, version='joe 0.0.0')
+    arguments = docopt(__doc__, version='joe 0.0.1')
 
     if (arguments['ls'] or arguments['list']):
         _print_filenames()
