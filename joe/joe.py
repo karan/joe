@@ -1,6 +1,6 @@
-"""Joe.
+"""joe.
 
-Joe generates .gitignore files from the command line for you
+joe generates .gitignore files from the command line for you
 
 Usage:
   joe (ls | list)
@@ -43,12 +43,12 @@ def _print_filenames():
 def _handle_gitignores(names):
     '''Generates and sends the gitignore contents to stdout.'''
     exit = False
-    output = '# Joe made this: https://goel.io/joe\n'
+    output = '# joe made this: https://goel.io/joe\n'
     for name in names:
         try:
             raw_name = GITIGNORE_RAW[GITIGNORE.index(name.lower())]
         except ValueError:
-            print ('Uh oh! Seems like Joe doesn\'t know what %s is.\n'
+            print ('Uh oh! Seems like joe doesn\'t know what %s is.\n'
                    'Try running `joe ls` to see list of available gitignore '
                    'files.') % name
             exit = True
@@ -62,9 +62,8 @@ def _handle_gitignores(names):
         print output
 
 
-if __name__ == '__main__':
-
-    arguments = docopt(__doc__, version='Joe 0.0.0')
+def main():
+    arguments = docopt(__doc__, version='joe 0.0.0')
 
     if (arguments['ls'] or arguments['list']):
         _print_filenames()
@@ -73,3 +72,6 @@ if __name__ == '__main__':
     else:
         print __doc__
 
+
+if __name__ == '__main__':
+    main()
