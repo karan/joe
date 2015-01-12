@@ -6,10 +6,10 @@ A .gitignore magician in your command line. Joe generates `.gitignore` files fro
 
 ## Features
 
-- Written in known Python
+- Written in uncomplicated Python
 - Easy to install
 - Stupidly easy to use
-- Supports att Github-supported `.gitignore` files
+- Supports all Github-supported `.gitignore` files
 - Warns if target directory isn't a git repo
 - Works on Mac, Linux and Windows
 
@@ -41,19 +41,19 @@ $ python setup.py install
 
 
 ```bash
-$ joe java    # outputs .gitignore file for java language to stdout
+$ joe java    # outputs .gitignore file for java to stdout
 ```
 
 ### Overwrite existing `.gitignore` file
 
 ```bash
-$ joe java > .gitignore    # saves a new .gitignore file for java language
+$ joe java > .gitignore    # saves a new .gitignore file for java
 ```
 
 ### Append to existing `.gitignore` file
 
 ```bash
-$ joe java >> .gitignore    # appends new .gitignore file for java language
+$ joe java >> .gitignore    # appends new .gitignore file for java
 ```
 
 ### Multiple languages
