@@ -16,6 +16,8 @@ A .gitignore magician in your command line. Joe generates `.gitignore` files fro
 
 ### Option 1: Homebrew
 
+**Doesn't work right now**
+
 ```bash
 $ brew install gitignore
 ```
@@ -26,7 +28,7 @@ $ brew install gitignore
 $ pip install joe
 ```
 
-### Option 2: From source
+### Option 3: From source
 
 ```bash
 $ git clone git@github.com:karan/joe.git

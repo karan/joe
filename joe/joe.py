@@ -5,7 +5,7 @@
     | |( (_) )(  ___/
  _  | |`\___/'`\____)
 ( )_| |              
-`\___/'              
+`\___/'
 
 
 joe generates .gitignore files from the command line for you
