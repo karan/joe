@@ -68,5 +68,8 @@ if __name__ == '__main__':
 
     if (arguments['ls'] or arguments['list']):
         _print_filenames()
-    else:
+    elif (arguments['NAME']):
         _handle_gitignores(arguments['NAME'])
+    else:
+        print __doc__
+

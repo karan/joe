@@ -10,7 +10,6 @@ A .gitignore magician in your command line. Joe generates `.gitignore` files fro
 - Easy to install
 - Stupidly easy to use
 - Supports all Github-supported `.gitignore` files
-- Warns if target directory isn't a git repo
 - Works on Mac, Linux and Windows
 
 ## Installation

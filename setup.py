@@ -16,7 +16,7 @@ setup(
         'joe': ['data/*.gitignore']
     },
     install_requires=[
-        "click==3.3",
+        "docopt==0.6.1",
     ],
     entry_points={
         'console_scripts': [
