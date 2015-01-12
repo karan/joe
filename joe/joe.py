@@ -1,4 +1,12 @@
-"""joe.
+"""                     
+     _               
+    (_)   _      __  
+    | | /'_`\  /'__`\\
+    | |( (_) )(  ___/
+ _  | |`\___/'`\____)
+( )_| |              
+`\___/'              
+
 
 joe generates .gitignore files from the command line for you
 
