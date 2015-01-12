@@ -20,7 +20,7 @@ A .gitignore magician in your command line. Joe generates `.gitignore` files fro
 $ brew install gitignore
 ```
 
-### Option 2: Pip
+### Option 2: [Pip](https://pypi.python.org/pypi/joe)
 
 ```bash
 $ pip install joe
