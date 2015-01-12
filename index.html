@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>joe by karan</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>joe</h1>
+        <p>A .gitignore magician in your command line</p>
+
+        <p class="view"><a href="https://github.com/karan/joe">View the Project on GitHub <small>karan/joe</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/karan/joe/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/karan/joe/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/karan/joe">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><img src="http://i.imgur.com/y8g506n.png" alt=""></p>
+
+<h1>
+<a id="joe" class="anchor" href="#joe" aria-hidden="true"><span class="octicon octicon-link"></span></a>joe</h1>
+
+<p>A .gitignore magician in your command line. Joe generates <code>.gitignore</code> files from the command line for you.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Written in uncomplicated Python</li>
+<li>Easy to <a href="https://github.com/karan/joe#installation">install</a>
+</li>
+<li>Stupidly <a href="https://github.com/karan/joe#usage">easy to use</a>
+</li>
+<li>Supports all Github-supported <a href="https://github.com/karan/joe#list-all-available-files"><code>.gitignore</code> files</a>
+</li>
+<li>Works on Mac, Linux and Windows</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="option-1-homebrew" class="anchor" href="#option-1-homebrew" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 1: Homebrew</h3>
+
+<div class="highlight highlight-bash"><pre>$ brew tap karan/karan
+$ brew install gitignore</pre></div>
+
+<h3>
+<a id="option-2-pip" class="anchor" href="#option-2-pip" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 2: <a href="https://pypi.python.org/pypi/joe">Pip</a>
+</h3>
+
+<div class="highlight highlight-bash"><pre>$ pip install joe</pre></div>
+
+<h3>
+<a id="option-3-from-source" class="anchor" href="#option-3-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 3: From source</h3>
+
+<div class="highlight highlight-bash"><pre>$ git clone git@github.com:karan/joe.git
+$ <span class="pl-s3">cd</span> joe/
+$ python setup.py install</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic usage</h3>
+
+<div class="highlight highlight-bash"><pre>$ joe java    <span class="pl-c"># outputs .gitignore file for java to stdout</span></pre></div>
+
+<h3>
+<a id="overwrite-existing-gitignore-file" class="anchor" href="#overwrite-existing-gitignore-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overwrite existing <code>.gitignore</code> file</h3>
+
+<div class="highlight highlight-bash"><pre>$ joe java <span class="pl-k">&gt;</span> .gitignore    <span class="pl-c"># saves a new .gitignore file for java</span></pre></div>
+
+<h3>
+<a id="append-to-existing-gitignore-file" class="anchor" href="#append-to-existing-gitignore-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Append to existing <code>.gitignore</code> file</h3>
+
+<div class="highlight highlight-bash"><pre>$ joe java <span class="pl-k">&gt;&gt;</span> .gitignore    <span class="pl-c"># appends new .gitignore file for java</span></pre></div>
+
+<h3>
+<a id="multiple-languages" class="anchor" href="#multiple-languages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multiple languages</h3>
+
+<div class="highlight highlight-bash"><pre>$ joe java node python <span class="pl-k">&gt;</span> .gitignore    <span class="pl-c"># saves a new .gitignore file for multiple languages</span></pre></div>
+
+<h3>
+<a id="list-all-available-files" class="anchor" href="#list-all-available-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>List all available files</h3>
+
+<div class="highlight highlight-bash"><pre>$ joe ls
+
+<span class="pl-c"># OR</span>
+
+$ joe list</pre></div>
+
+<p>Output:</p>
+
+<blockquote>
+<p>actionscript, ada, agda, android, appceleratortitanium, archlinuxpackages, autotools, c++, c, cakephp, cfwheels, chefcookbook, clojure, cmake, codeigniter, commonlisp, composer, concrete5, coq, craftcms, dart, delphi, dm, drupal, eagle, elisp, elixir, episerver, erlang, expressionengine, extjs, fancy, finale, forcedotcom, fortran, fuelphp, gcov, gitbook, go, gradle, grails, gwt, haskell, idris, igorpro, java, jboss, jekyll, joomla, jython, kohana, labview, laravel, leiningen, lemonstand, lilypond, lithium, lua, magento, maven, mercury, metaprogrammingsystem, meteor, nanoc, nim, node, objective-c, ocaml, opa, opencart, oracleforms, packer, perl, phalcon, playframework, plone, prestashop, processing, python, qooxdoo, qt, r, rails, rhodesrhomobile, ros, ruby, rust, sass, scala, scons, scrivener, sdcc, seamgen, sketchup, stella, sugarcrm, swift, symfony, symphonycms, tex, textpattern, turbogears2, typo3, umbraco, unity, visualstudio, vvvv, waf, wordpress, xojo, yeoman, yii, zendframework, zephir</p>
+</blockquote>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/karan">karan</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-9509587-21");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
