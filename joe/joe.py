@@ -46,7 +46,7 @@ def _handle_gitignores(names):
     output = '# Joe made this: https://goel.io/joe\n'
     for name in names:
         try:
-            raw_name = GITIGNORE_RAW[GITIGNORE.index(name)]
+            raw_name = GITIGNORE_RAW[GITIGNORE.index(name.lower())]
         except ValueError:
             print ('Uh oh! Seems like Joe doesn\'t know what %s is.\n'
                    'Try running `joe ls` to see list of available gitignore '
