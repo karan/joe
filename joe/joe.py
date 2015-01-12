@@ -1,4 +1,5 @@
 import os
+import sys
 
 import click
 
@@ -12,8 +13,9 @@ def _get_data_dir(path):
 # Where all gitignore files are
 DATA_DIR = _get_data_dir('*.gitignore')
 # Load up names for all gitignore files
-GITIGNORE = [f.replace('.gitignore', '').lower() \
-                for f in next(os.walk(DATA_DIR))[2]]
+GITIGNORE_RAW = [f.replace('.gitignore', '') \
+                    for f in next(os.walk(DATA_DIR))[2]]
+GITIGNORE = [f.lower() for f in GITIGNORE_RAW]
 
 
 def _print_filenames():
@@ -35,14 +37,22 @@ def list():
     _print_filenames()
 
 
+# @click.command(help='Output the .gitignore for passed languages.')
+# @click.argument('langs', nargs=-1, type=click.Path())
+# def generate(langs):
+#     '''Generates and sends the gitignore contents to stdout.'''
+#     output = '# Joe made this: https://goel.io/joe\n'
+#     filepath = os.path.join(DATA_DIR, GITIGNORE_RAW[GITIGNORE.index(name)] + '.gitignore')
+#     click.echo(langs)
+
+
 @click.group()
-def cli():
+def known_cli():
     '''Joe generates .gitignore files from the command line for you.'''
     pass
 
-
-cli.add_command(ls)
-cli.add_command(list)
+known_cli.add_command(ls)
+known_cli.add_command(list)
 
 
 if __name__ == '__main__':
