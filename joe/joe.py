@@ -42,7 +42,7 @@ def _walk_gitignores():
   '''Recurse over the data directory and return all .gitignore file names'''
   l = []
   for root, subFolders, files in os.walk(DATA_DIR):
-    l += [f.replace('.gitignore', '') for f in files if '.gitignore' in f]
+    l += [f.replace('.gitignore', '') for f in files if f.endswith('.gitignore')]
   return sorted(l)
 
 
@@ -73,7 +73,13 @@ def _handle_gitignores(names):
 
 
 def _fetch_gitignore(raw_name, directory=''):
-  '''Returns a the corresponding .gitignore as a string'''
+  '''Returns a the corresponding .gitignore as a string.
+  
+  It is assumed that raw_name is a valid .gitignore filename.
+  Given a raw_name, it will look in data/ and then data/Global/ for a matching .gitignore.
+  An empty string as a default argument evaluates to None.
+  directory must then be checked as string operations such as string + None return ''
+  '''
   output = '\n#####=== %s ===#####\n' % raw_name
   if directory:
     filepath = os.path.join(DATA_DIR, directory + '/' + raw_name + '.gitignore')
