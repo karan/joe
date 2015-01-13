@@ -43,7 +43,7 @@ def _walk_gitignores():
   l = []
   for root, subFolders, files in os.walk(DATA_DIR):
     l += [f.replace('.gitignore', '') for f in files if '.gitignore' in f]
-  return l
+  return sorted(l)
 
 
 # Load up names for all gitignore files
@@ -53,7 +53,7 @@ GITIGNORE = [f.lower() for f in GITIGNORE_RAW]
 
 def _print_filenames():
     '''List all available .gitignore files.'''
-    print ', '.join(sorted(GITIGNORE))
+    print ', '.join(GITIGNORE)
 
 
 def _handle_gitignores(names):
