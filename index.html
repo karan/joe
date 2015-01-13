@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,20 +16,21 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>joe</h1>
-        <p>A .gitignore magician in your command line</p>
-
-        <p class="view"><a href="https://github.com/karan/joe">View the Project on GitHub <small>karan/joe</small></a></p>
-
+        <h1 class="header">joe</h1>
+        <p class="header">A .gitignore magician in your command line</p>
 
         <ul>
-          <li><a href="https://github.com/karan/joe/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/karan/joe/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/karan/joe">View On <strong>GitHub</strong></a></li>
+          <li class="download"><a class="buttons" href="https://github.com/karan/joe/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/karan/joe/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/karan/joe">View On GitHub</a></li>
         </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/karan">karan</a></p>
+
+
       </header>
       <section>
-        <p><img src="http://i.imgur.com/y8g506n.png" alt=""></p>
+        <p><img src="http://i.imgur.com/y8g506n.png?1" alt=""></p>
 
 <h1>
 <a id="joe" class="anchor" href="#joe" aria-hidden="true"><span class="octicon octicon-link"></span></a>joe</h1>
@@ -55,7 +57,8 @@
 <h3>
 <a id="option-1-homebrew" class="anchor" href="#option-1-homebrew" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 1: Homebrew</h3>
 
-<div class="highlight highlight-bash"><pre>$ brew tap karan/karan
+<div class="highlight highlight-bash"><pre>$ brew update
+$ brew tap karan/karan
 $ brew install gitignore</pre></div>
 
 <h3>
@@ -67,7 +70,7 @@ $ brew install gitignore</pre></div>
 <h3>
 <a id="option-3-from-source" class="anchor" href="#option-3-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 3: From source</h3>
 
-<div class="highlight highlight-bash"><pre>$ git clone git@github.com:karan/joe.git
+<div class="highlight highlight-bash"><pre>$ git clone --recursive git@github.com:karan/joe.git
 $ <span class="pl-s3">cd</span> joe/
 $ python setup.py install</pre></div>
 
@@ -108,14 +111,31 @@ $ joe list</pre></div>
 <blockquote>
 <p>actionscript, ada, agda, android, appceleratortitanium, archlinuxpackages, autotools, c++, c, cakephp, cfwheels, chefcookbook, clojure, cmake, codeigniter, commonlisp, composer, concrete5, coq, craftcms, dart, delphi, dm, drupal, eagle, elisp, elixir, episerver, erlang, expressionengine, extjs, fancy, finale, forcedotcom, fortran, fuelphp, gcov, gitbook, go, gradle, grails, gwt, haskell, idris, igorpro, java, jboss, jekyll, joomla, jython, kohana, labview, laravel, leiningen, lemonstand, lilypond, lithium, lua, magento, maven, mercury, metaprogrammingsystem, meteor, nanoc, nim, node, objective-c, ocaml, opa, opencart, oracleforms, packer, perl, phalcon, playframework, plone, prestashop, processing, python, qooxdoo, qt, r, rails, rhodesrhomobile, ros, ruby, rust, sass, scala, scons, scrivener, sdcc, seamgen, sketchup, stella, sugarcrm, swift, symfony, symphonycms, tex, textpattern, turbogears2, typo3, umbraco, unity, visualstudio, vvvv, waf, wordpress, xojo, yeoman, yii, zendframework, zephir</p>
 </blockquote>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<h4>
+<a id="bug-reports" class="anchor" href="#bug-reports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bug reports</h4>
+
+<p>Please use the issue tracker to report any bugs or file feature requests.</p>
+
+<h4>
+<a id="developing" class="anchor" href="#developing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Developing</h4>
+
+<p>PRs are welcome. To begin developing, do this:</p>
+
+<div class="highlight highlight-bash"><pre><span class="pl-c"># make virtual env</span>
+$ git clone --recursive git@github.com:karan/joe.git
+$ <span class="pl-s3">cd</span> joe/
+$ python joe/joe.py java</pre></div>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/karan">karan</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
