@@ -17,6 +17,7 @@ A .gitignore magician in your command line. Joe generates `.gitignore` files fro
 ### Option 1: Homebrew
 
 ```bash
+$ brew update
 $ brew tap karan/karan
 $ brew install gitignore
 ```
@@ -30,7 +31,7 @@ $ pip install joe
 ### Option 3: From source
 
 ```bash
-$ git clone git@github.com:karan/joe.git
+$ git clone --recursive git@github.com:karan/joe.git
 $ cd joe/
 $ python setup.py install
 ```
@@ -75,3 +76,20 @@ $ joe list
 Output:
 
 > actionscript, ada, agda, android, appceleratortitanium, archlinuxpackages, autotools, c++, c, cakephp, cfwheels, chefcookbook, clojure, cmake, codeigniter, commonlisp, composer, concrete5, coq, craftcms, dart, delphi, dm, drupal, eagle, elisp, elixir, episerver, erlang, expressionengine, extjs, fancy, finale, forcedotcom, fortran, fuelphp, gcov, gitbook, go, gradle, grails, gwt, haskell, idris, igorpro, java, jboss, jekyll, joomla, jython, kohana, labview, laravel, leiningen, lemonstand, lilypond, lithium, lua, magento, maven, mercury, metaprogrammingsystem, meteor, nanoc, nim, node, objective-c, ocaml, opa, opencart, oracleforms, packer, perl, phalcon, playframework, plone, prestashop, processing, python, qooxdoo, qt, r, rails, rhodesrhomobile, ros, ruby, rust, sass, scala, scons, scrivener, sdcc, seamgen, sketchup, stella, sugarcrm, swift, symfony, symphonycms, tex, textpattern, turbogears2, typo3, umbraco, unity, visualstudio, vvvv, waf, wordpress, xojo, yeoman, yii, zendframework, zephir
+
+## Contributing
+
+#### Bug reports
+
+Please use the issue tracker to report any bugs or file feature requests.
+
+#### Developing
+
+PRs are welcome. To begin developing, do this:
+
+```bash
+# make virtual env
+$ git clone --recursive git@github.com:karan/joe.git
+$ cd joe/
+$ python joe/joe.py java
+```
