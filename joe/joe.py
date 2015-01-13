@@ -37,15 +37,23 @@ def _get_data_dir(path):
 
 # Where all gitignore files are
 DATA_DIR = _get_data_dir('*.gitignore')
+
+def _walk_gitignores():
+  '''Recurse over the data directory and return all .gitignore file names'''
+  l = []
+  for root, subFolders, files in os.walk(DATA_DIR):
+    l += [f.replace('.gitignore', '') for f in files if '.gitignore' in f]
+  return l
+
+
 # Load up names for all gitignore files
-GITIGNORE_RAW = [f.replace('.gitignore', '') \
-                    for f in next(os.walk(DATA_DIR))[2]]
+GITIGNORE_RAW = _walk_gitignores()
 GITIGNORE = [f.lower() for f in GITIGNORE_RAW]
 
 
 def _print_filenames():
     '''List all available .gitignore files.'''
-    print ', '.join(GITIGNORE)
+    print ', '.join(sorted(GITIGNORE))
 
 
 def _handle_gitignores(names):
@@ -61,13 +69,23 @@ def _handle_gitignores(names):
                    'files.') % name
             exit = True
             break
-        output += '\n#####=== %s ===#####\n' % raw_name
-        filepath = os.path.join(DATA_DIR, raw_name + '.gitignore')
-        output += '\n'
-        with open(filepath) as f:
-            output += f.read()
-    if not exit:
-        print output
+        _fetch_gitignore(raw_name)
+
+
+def _fetch_gitignore(raw_name, directory=''):
+  '''Returns a the corresponding .gitignore as a string'''
+  output = '\n#####=== %s ===#####\n' % raw_name
+  if directory:
+    filepath = os.path.join(DATA_DIR, directory + '/' + raw_name + '.gitignore')
+  else:
+    filepath = os.path.join(DATA_DIR, raw_name + '.gitignore')
+  output += '\n'
+  try:
+    with open(filepath) as f:
+      output += f.read()
+    print output
+  except IOError:
+    _fetch_gitignore(raw_name, 'Global')
 
 
 def main():
