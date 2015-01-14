@@ -29,6 +29,9 @@ import sys
 from docopt import docopt
 
 
+__version__ = '0.0.2'
+
+
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 def _get_data_dir(path):
     '''Returns the path to the directory matching the passed `path`.'''
@@ -99,7 +102,7 @@ def _fetch_gitignore(raw_name, directory=''):
 
 
 def main():
-    arguments = docopt(__doc__, version='joe 0.0.2')
+    arguments = docopt(__doc__, version=__version__)
 
     if (arguments['ls'] or arguments['list']):
         _print_filenames()

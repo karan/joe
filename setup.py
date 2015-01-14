@@ -2,9 +2,12 @@
 
 from setuptools import setup, find_packages
 
+import joe
+
+
 setup(
     name='joe',
-    version='0.0.2',
+    version=__version__,
     description='joe generates .gitignore files from the command line for you.',
     long_description=open('README.md').read(),
     author='Karan Goel',
