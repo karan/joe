@@ -9,9 +9,9 @@ function usage {
     $ $tool [-h|--help] COMMAND
 
   EXAMPLES:
-    $ $tool readme
-    $ $tool pypitest
-    $ $tool pypiprod
+    $ $tool readme    Generate README.rst from README.md
+    $ $tool test      Upload release to testpypi
+    $ $tool prod      Upload release to prod pypi
 EOF
   exit 1;
 }
