@@ -3,9 +3,11 @@
 from setuptools import setup, find_packages
 
 
+version = '0.0.4'
+
 setup(
     name='joe',
-    version='0.0.4',
+    version=version,
     description='joe generates .gitignore files from the command line for you.',
     long_description=open('README.rst').read(),
     author='Karan Goel',
@@ -13,13 +15,13 @@ setup(
     license='MIT',
     keywords=['gitignore', 'git', 'github', 'command line', 'cli'],
     url='http://github.com/karan/joe',
-    download_url='https://github.com/karan/joe/archive/0.0.2.tar.gz',
+    download_url=('https://github.com/karan/joe/archive/%s.tar.gz' % version),
     packages=find_packages(),
     package_data={
         'joe': ['data/*.gitignore']
     },
     install_requires=[
-        "docopt==0.6.1",
+        'docopt>=0.6.1',
     ],
     entry_points={
         'console_scripts': [

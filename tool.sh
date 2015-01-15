@@ -17,6 +17,13 @@ EOF
 }
 
 
+# convert README.md to README.rst
+function readme {
+  pandoc --from=markdown --to=rst --output=README.rst README.md
+  printf 'README.rst generated';
+}
+
+
 # total arguments should be 1
 if [ $# -ne 1 ]; then
    usage;
@@ -30,13 +37,13 @@ fi
 
 # show help for no arguments if stdin is a terminal
 if [ "$1" == "readme" ]; then
-  # convert README.md to README.rst
-  pandoc --from=markdown --to=rst --output=README.rst README.md
-  printf 'README.rst generated';
-elif [ "$1" == "pypitest" ]; then
+  readme
+elif [ "$1" == "test" ]; then
+  readme
   # build and upload package to test pypi
   python setup.py sdist upload -r pypitest
-elif [ "$1" == "pypiprod" ]; then
+elif [ "$1" == "prod" ]; then
+  readme
   # build and upload package to prod pypi
   python setup.py sdist upload -r pypi
 else
