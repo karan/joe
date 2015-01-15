@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 
-version = '0.0.4'
+version = '0.0.5'
 
 setup(
     name='joe',
@@ -18,7 +18,7 @@ setup(
     download_url=('https://github.com/karan/joe/archive/%s.tar.gz' % version),
     packages=find_packages(),
     package_data={
-        'joe': ['data/*.gitignore']
+        'joe': ['data/*.gitignore', 'data/Global/*.gitignore']
     },
     install_requires=[
         'docopt>=0.6.1',
