@@ -15,7 +15,6 @@ setup(
     license='MIT',
     keywords=['gitignore', 'git', 'github', 'command line', 'cli'],
     url='http://github.com/karan/joe',
-    download_url=('https://github.com/karan/joe/archive/%s.tar.gz' % version),
     packages=find_packages(),
     package_data={
         'joe': ['data/*.gitignore', 'data/Global/*.gitignore']
