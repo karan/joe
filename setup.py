@@ -7,7 +7,7 @@ setup(
     name='joe',
     version='0.0.3',
     description='joe generates .gitignore files from the command line for you.',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     author='Karan Goel',
     author_email='karan@goel.io',
     license='MIT',

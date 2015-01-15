@@ -1,0 +1,7 @@
+include *.md
+include *.rst
+include *.txt
+
+global-exclude *.pyc
+global-exclude .gitignore
+global-exclude .DS_Store
