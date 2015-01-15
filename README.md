@@ -88,7 +88,7 @@ Output:
 
 Please use the issue tracker to report any bugs or file feature requests.
 
-#### Developing
+## Developing
 
 PRs are welcome. To begin developing, do this:
 
@@ -98,3 +98,35 @@ $ git clone --recursive git@github.com:karan/joe.git
 $ cd joe/
 $ python joe/joe.py java
 ```
+
+#### `tool.sh`
+
+This is a handly script that automates a lot of developing steps.
+
+
+```bash
+USAGE:
+  $ tool.sh [-h|--help] COMMAND
+
+EXAMPLES:
+  $ tool.sh readme    Generate README.rst from README.md
+  $ tool.sh test      Upload release to testpypi
+  $ tool.sh prod      Upload release to prod pypi
+```
+
+Make sure you have a file `.pypirc` in `~/` in the following format:
+
+    [distutils]
+    index-servers =
+        pypi
+        pypitest
+
+    [pypi]
+    repository: https://pypi.python.org/pypi
+    username: <<>>
+    password: <<>>
+
+    [pypitest]
+    repository: https://testpypi.python.org/pypi
+    username: <<>>
+    password: <<>>
