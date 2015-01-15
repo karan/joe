@@ -32,10 +32,11 @@ fi
 if [ "$1" == "readme" ]; then
   # convert README.md to README.rst
   pandoc --from=markdown --to=rst --output=README.rst README.md
-else if [ "$1" == "pypitest" ]; then
+  printf 'README.rst generated';
+elif [ "$1" == "pypitest" ]; then
   # build and upload package to test pypi
   python setup.py sdist upload -r pypitest
-else if [ "$1" == "pypiprod" ]; then
+elif [ "$1" == "pypiprod" ]; then
   # build and upload package to prod pypi
   python setup.py sdist upload -r pypi
 else

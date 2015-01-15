@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='joe',
-    version='0.0.3',
+    version='0.0.4',
     description='joe generates .gitignore files from the command line for you.',
     long_description=open('README.rst').read(),
     author='Karan Goel',
