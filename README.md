@@ -4,6 +4,8 @@
 
 A .gitignore magician in your command line. Joe generates `.gitignore` files from the command line for you.
 
+![](http://i.imgur.com/ghmJLUP.gif)
+
 ## Features
 
 - Written in uncomplicated Python
