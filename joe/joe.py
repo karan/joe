@@ -21,11 +21,10 @@ Options:
   --version     Show version.
 
 """
-
+from __future__ import print_function
 
 import os
 import sys
-from __future__ import print_function
 
 from docopt import docopt
 
