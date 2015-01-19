@@ -2,7 +2,7 @@
 
 # joe
 
-A .gitignore magician in your command line. Joe generates `.gitignore` files from the command line for you.
+A `.gitignore` magician in your command line. Joe generates `.gitignore` files from the command line for you.
 
 ![](http://i.imgur.com/ghmJLUP.gif)
 
@@ -13,6 +13,7 @@ A .gitignore magician in your command line. Joe generates `.gitignore` files fro
 - Stupidly [easy to use](https://github.com/karan/joe#usage)
 - Supports all Github-supported [`.gitignore` files](https://github.com/karan/joe#list-all-available-files)
 - Works on Mac, Linux and Windows
+- Supports other version control systems (`.hgignore`)
 
 ## Installation
 
@@ -56,13 +57,13 @@ $ joe java > .gitignore    # saves a new .gitignore file for java
 ### Append to existing `.gitignore` file
 
 ```bash
-$ joe java >> .gitignore    # appends new .gitignore file for java
+$ joe java >> .gitignore    # appends to an existing .gitignore file
 ```
 
 ### Multiple languages
 
 ```bash
-$ joe java node python > .gitignore    # saves a new .gitignore file for multiple languages
+$ joe java node osx > .gitignore    # saves a new .gitignore file for multiple languages
 ```
 
 ### Create and append to a global .gitignore file
@@ -77,11 +78,7 @@ $ joe OSX SublimeText >> ~/.gitignore
 ### List all available files
 
 ```bash
-$ joe ls
-
-# OR
-
-$ joe list
+$ joe ls    # OR `joe list`
 ```
 
 Output:
@@ -90,15 +87,19 @@ Output:
 
 ### BONUS ROUND: Alternate version control software
 
-Joe isn't **just** a generator for .gitignore files. You can use it and its output wherever a SCM is used.
+Joe isn't **just** a generator for `.gitignore` files. You can use it and its output wherever a SCM is used.
 
 ```bash
 $ joe java > .hgignore
 ```
 
-Please use the issue tracker to report any bugs or file feature requests.
+## Contributing
 
-## Developing
+#### Bug Reports & Feature Requests
+
+Please use the [issue tracker](https://github.com/karan/joe/issues) to report any bugs or file feature requests.
+
+#### Developing
 
 PRs are welcome. To begin developing, do this:
 

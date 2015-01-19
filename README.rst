@@ -4,8 +4,11 @@
 joe
 ===
 
-A .gitignore magician in your command line. Joe generates ``.gitignore``
-files from the command line for you.
+A ``.gitignore`` magician in your command line. Joe generates
+``.gitignore`` files from the command line for you.
+
+.. figure:: http://i.imgur.com/ghmJLUP.gif
+   :alt: 
 
 Features
 --------
@@ -16,6 +19,7 @@ Features
 -  Supports all Github-supported ```.gitignore``
    files <https://github.com/karan/joe#list-all-available-files>`__
 -  Works on Mac, Linux and Windows
+-  Supports other version control systems (``.hgignore``)
 
 Installation
 ------------
@@ -67,14 +71,14 @@ Append to existing ``.gitignore`` file
 
 .. code:: bash
 
-    $ joe java >> .gitignore    # appends new .gitignore file for java
+    $ joe java >> .gitignore    # appends to an existing .gitignore file
 
 Multiple languages
 ~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-    $ joe java node python > .gitignore    # saves a new .gitignore file for multiple languages
+    $ joe java node osx > .gitignore    # saves a new .gitignore file for multiple languages
 
 Create and append to a global .gitignore file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,11 +97,7 @@ List all available files
 
 .. code:: bash
 
-    $ joe ls
-
-    # OR
-
-    $ joe list
+    $ joe ls    # OR `joe list`
 
 Output:
 
@@ -126,11 +126,27 @@ Output:
     windows, wordpress, xcode, xilinxise, xojo, yeoman, yii,
     zendframework, zephir
 
-Please use the issue tracker to report any bugs or file feature
-requests.
+BONUS ROUND: Alternate version control software
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Joe isn't **just** a generator for ``.gitignore`` files. You can use it
+and its output wherever a SCM is used.
+
+.. code:: bash
+
+    $ joe java > .hgignore
+
+Contributing
+------------
+
+Bug Reports & Feature Requests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Please use the `issue tracker <https://github.com/karan/joe/issues>`__
+to report any bugs or file feature requests.
 
 Developing
-----------
+^^^^^^^^^^
 
 PRs are welcome. To begin developing, do this:
 
