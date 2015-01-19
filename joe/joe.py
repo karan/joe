@@ -25,6 +25,7 @@ Options:
 
 import os
 import sys
+from __future__ import print_function
 
 from docopt import docopt
 
@@ -56,7 +57,7 @@ GITIGNORE = [f.lower() for f in GITIGNORE_RAW]
 
 def _print_filenames():
     '''List all available .gitignore files.'''
-    print ', '.join(GITIGNORE)
+    print(', '.join(GITIGNORE))
 
 
 def _handle_gitignores(names):
@@ -67,13 +68,13 @@ def _handle_gitignores(names):
         try:
             raw_name = GITIGNORE_RAW[GITIGNORE.index(name.lower())]
         except ValueError:
-            print ('Uh oh! Seems like joe doesn\'t know what %s is.\n'
+            print(('Uh oh! Seems like joe doesn\'t know what %s is.\n'
                    'Try running `joe ls` to see list of available gitignore '
-                   'files.') % name
+                   'files.') % name)
             exit = True
             break
         output += _fetch_gitignore(raw_name)
-    print output
+    print(output)
 
 
 def _fetch_gitignore(raw_name, directory=''):
@@ -109,7 +110,7 @@ def main():
     elif (arguments['NAME']):
         _handle_gitignores(arguments['NAME'])
     else:
-        print __doc__
+        print(__doc__)
 
 
 if __name__ == '__main__':
