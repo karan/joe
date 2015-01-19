@@ -16,6 +16,7 @@ setup(
     keywords=['gitignore', 'git', 'github', 'command line', 'cli'],
     url='http://github.com/karan/joe',
     packages=find_packages(),
+    test_suite="tests",
     package_data={
         'joe': ['data/*.gitignore', 'data/Global/*.gitignore']
     },
