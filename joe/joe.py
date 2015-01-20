@@ -1,10 +1,10 @@
-"""                     
-     _               
-    (_)   _      __  
+"""
+     _
+    (_)   _      __
     | | /'_`\  /'__`\\
     | |( (_) )(  ___/
  _  | |`\___/'`\____)
-( )_| |              
+( )_| |
 `\___/'
 
 
@@ -17,7 +17,7 @@ Usage:
   joe --version
 
 Options:
-  -h --help        Show this screen.
+  -h --help     Show this screen.
   --version     Show version.
 
 """
@@ -83,7 +83,7 @@ def _fetch_gitignore(raw_name, directory=''):
     Given a raw_name, it will look in data/ and then data/Global/ for a
         matching .gitignore.
     An empty string as a default argument evaluates to None.
-    directory must then be checked as string operations such as 
+    directory must then be checked as string operations such as
         string + None return ''
     '''
     output = '\n#####=== %s ===#####\n' % raw_name
