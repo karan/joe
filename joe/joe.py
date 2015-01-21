@@ -33,6 +33,8 @@ __version__ = '0.0.5'
 
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
+
+
 def _get_data_dir(path):
     '''Returns the path to the directory matching the passed `path`.'''
     return os.path.dirname(os.path.join(_ROOT, 'data', path))
@@ -42,8 +44,8 @@ def _walk_gitignores():
     '''Recurse over the data directory and return all .gitignore file names'''
     l = []
     for root, subFolders, files in os.walk(DATA_DIR):
-        l += [f.replace('.gitignore', '') \
-                for f in files if f.endswith('.gitignore')]
+        l += [f.replace('.gitignore', '')
+              for f in files if f.endswith('.gitignore')]
     return sorted(l)
 
 
@@ -88,8 +90,8 @@ def _fetch_gitignore(raw_name, directory=''):
     '''
     output = '\n#####=== %s ===#####\n' % raw_name
     if directory:
-        filepath = os.path.join(DATA_DIR, '%s' % directory + '/' + raw_name + \
-                                                 '.gitignore')
+        filepath = os.path.join(DATA_DIR, '%s/%s.gitignore' %
+                                (directory, raw_name))
     else:
         filepath = os.path.join(DATA_DIR, raw_name + '.gitignore')
         output += '\n'
