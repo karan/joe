@@ -21,6 +21,7 @@ setup(
     },
     install_requires=[
         'docopt>=0.6.1',
+        'termcolor>=1.1.0'
     ],
     entry_points={
         'console_scripts': [
