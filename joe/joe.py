@@ -122,11 +122,11 @@ def _fetch_gitignore(raw_name, directory=''):
         string + None return ''
     '''
     output = '\n#####=== %s ===#####\n' % raw_name
+    custom_filepath = os.path.join(SHARED_DATA_DIR, raw_name + '.gitignore')
     if directory:
         filepath = os.path.join(DATA_DIR, '%s' % directory + '/' + raw_name + \
                                                  '.gitignore')
     else:
-        custom_filepath = os.path.join(SHARED_DATA_DIR, raw_name + '.gitignore')
         filepath = os.path.join(DATA_DIR, raw_name + '.gitignore')
         output += '\n'
     try:
