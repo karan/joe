@@ -56,7 +56,7 @@ GITIGNORE = [f.lower() for f in GITIGNORE_RAW]
 
 def _print_filenames():
     '''List all available .gitignore files.'''
-    print ', '.join(GITIGNORE)
+    return ', '.join(GITIGNORE)
 
 
 def _handle_gitignores(names):
@@ -73,7 +73,7 @@ def _handle_gitignores(names):
             exit = True
             break
         output += _fetch_gitignore(raw_name)
-    print output
+    return output
 
 
 def _fetch_gitignore(raw_name, directory=''):
@@ -105,9 +105,9 @@ def main():
     arguments = docopt(__doc__, version=__version__)
 
     if (arguments['ls'] or arguments['list']):
-        _print_filenames()
+        print _print_filenames()
     elif (arguments['NAME']):
-        _handle_gitignores(arguments['NAME'])
+        print _handle_gitignores(arguments['NAME'])
     else:
         print __doc__
 
