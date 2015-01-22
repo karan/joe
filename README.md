@@ -85,6 +85,34 @@ Output:
 
 > actionscript, ada, agda, android, anjuta, appceleratortitanium, archives, archlinuxpackages, autotools, bricxcc, c, c++, cakephp, cfwheels, chefcookbook, clojure, cloud9, cmake, codeigniter, codekit, commonlisp, composer, concrete5, coq, craftcms, cvs, dart, darteditor, delphi, dm, dreamweaver, drupal, eagle, eclipse, eiffelstudio, elisp, elixir, emacs, ensime, episerver, erlang, espresso, expressionengine, extjs, fancy, finale, flexbuilder, forcedotcom, fortran, fuelphp, gcov, gitbook, go, gradle, grails, gwt, haskell, idris, igorpro, ipythonnotebook, java, jboss, jdeveloper, jekyll, jetbrains, joomla, jython, kate, kdevelop4, kohana, labview, laravel, lazarus, leiningen, lemonstand, libreoffice, lilypond, linux, lithium, lua, lyx, magento, matlab, maven, mercurial, mercury, metaprogrammingsystem, meteor, microsoftoffice, modelsim, momentics, monodevelop, nanoc, netbeans, nim, ninja, node, notepadpp, objective-c, ocaml, opa, opencart, oracleforms, osx, packer, perl, phalcon, playframework, plone, prestashop, processing, python, qooxdoo, qt, r, rails, redcar, redis, rhodesrhomobile, ros, ruby, rust, sass, sbt, scala, scons, scrivener, sdcc, seamgen, sketchup, slickedit, stella, sublimetext, sugarcrm, svn, swift, symfony, symphonycms, tags, tex, textmate, textpattern, tortoisegit, turbogears2, typo3, umbraco, unity, vagrant, vim, virtualenv, visualstudio, vvvv, waf, webmethods, windows, wordpress, xcode, xilinxise, xojo, yeoman, yii, zendframework, zephir
 
+###Add and remove custom gitignores
+
+
+```bash
+$ joe add my.gitignore    # OR `joe a my.gitignore`
+```
+
+
+Will make `joe my > .gitignore` work just as you expected. You can also
+write custom ignores for templates already available, for example
+
+```bash
+$ joe add laravel.gitignore
+```
+
+Next time you call `joe laravel > .gitignore` from your CLI, the custom gitignore will be used instead of the default one.
+
+To remove a custom gitignore, just run
+
+```bash
+$ joe remove laravel # OR `joe rm laravel`
+```
+
+And and the custom ignore will be removed.
+
+>NOTE: You can't remove default ignores, just the ones you added yourself
+
+
 ### BONUS ROUND: Alternate version control software
 
 Joe isn't **just** a generator for `.gitignore` files. You can use it and its output wherever a SCM is used.

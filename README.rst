@@ -126,6 +126,34 @@ Output:
     windows, wordpress, xcode, xilinxise, xojo, yeoman, yii,
     zendframework, zephir
 
+Add and remove custom gitignores
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: bash
+
+    $ joe add my.gitignore    # OR `joe a my.gitignore`
+
+Will make `joe my > .gitignore` work just as you expected. You can also
+write custom ignores for templates already available, for example
+
+.. code:: bash
+
+    $ joe add laravel.gitignore
+
+Next time you call `joe laravel > .gitignore` from your CLI, the custom gitignore will be used instead of the default one.
+
+To remove a custom gitignore, just run
+
+.. code:: bash
+
+	$ joe remove laravel # OR `joe rm laravel`
+
+And and the custom ignore will be removed.
+
+    NOTE: You can't remove default ignores, just the ones you added yourself
+
+
+
 BONUS ROUND: Alternate version control software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
