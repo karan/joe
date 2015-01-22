@@ -42,7 +42,7 @@ def _get_data_dir(path):
 def _walk_gitignores():
     '''Recurse over the data directory and return all .gitignore file names'''
     gitignore = []
-    for _, _, files in os.walk(DATA_DIR):
+    for _root, _sub_folders, files in os.walk(DATA_DIR):
         gitignore += [f.replace('.gitignore', '')
                       for f in files if f.endswith('.gitignore')]
     return sorted(gitignore)
