@@ -28,7 +28,7 @@ import os
 from docopt import docopt
 
 
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -41,11 +41,11 @@ def _get_data_dir(path):
 
 def _walk_gitignores():
     '''Recurse over the data directory and return all .gitignore file names'''
-    gitignore = []
+    gitignores = []
     for _root, _sub_folders, files in os.walk(DATA_DIR):
-        gitignore += [f.replace('.gitignore', '')
-                      for f in files if f.endswith('.gitignore')]
-    return sorted(gitignore)
+        gitignores += [f.replace('.gitignore', '')
+                       for f in files if f.endswith('.gitignore')]
+    return sorted(gitignores)
 
 
 # Where all gitignore files are
