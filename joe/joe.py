@@ -99,7 +99,7 @@ def _handle_gitignores(names):
     output = '#### joe made this: https://goel.io/joe\n'
     for name in names:
         try:
-            gitignore_index = GITIGNORE_INDEX.index(name)
+            gitignore_index = GITIGNORE_INDEX.index(name.lower())
             raw_name = GITIGNORE_FILES[gitignore_index]
         except ValueError:
             print ('Uh oh! Seems like joe doesn\'t know what %s is.\n'
