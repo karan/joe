@@ -1,7 +1,7 @@
-"""
+r"""
      _
     (_)   _      __
-    | | /'_`\  /'__`\\
+    | | /'_`\  /'__`\
     | |( (_) )(  ___/
  _  | |`\___/'`\____)
 ( )_| |
@@ -24,15 +24,16 @@ Options:
 
 
 import os
-import sys
 
 from docopt import docopt
 
 
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
+
+
 def _get_data_dir(path):
     '''Returns the path to the directory matching the passed `path`.'''
     return os.path.dirname(os.path.join(_ROOT, 'data', path))
@@ -40,18 +41,18 @@ def _get_data_dir(path):
 
 def _walk_gitignores():
     '''Recurse over the data directory and return all .gitignore file names'''
-    l = []
-    for root, subFolders, files in os.walk(DATA_DIR):
-        l += [f.replace('.gitignore', '') \
-                for f in files if f.endswith('.gitignore')]
-    return sorted(l)
+    gitignores = []
+    for _root, _sub_folders, files in os.walk(DATA_DIR):
+        gitignores += [f.replace('.gitignore', '')
+                       for f in files if f.endswith('.gitignore')]
+    return sorted(gitignores)
 
 
 # Where all gitignore files are
 DATA_DIR = _get_data_dir('*.gitignore')
 # Load up names for all gitignore files
 GITIGNORE_RAW = _walk_gitignores()
-GITIGNORE = [f.lower() for f in GITIGNORE_RAW]
+GITIGNORE = [filename.lower() for filename in GITIGNORE_RAW]
 
 
 def _print_filenames():
@@ -61,7 +62,6 @@ def _print_filenames():
 
 def _handle_gitignores(names):
     '''Generates and sends the gitignore contents to stdout.'''
-    exit = False
     output = '#### joe made this: https://goel.io/joe\n'
     for name in names:
         try:
@@ -70,7 +70,6 @@ def _handle_gitignores(names):
             print ('Uh oh! Seems like joe doesn\'t know what %s is.\n'
                    'Try running `joe ls` to see list of available gitignore '
                    'files.') % name
-            exit = True
             break
         output += _fetch_gitignore(raw_name)
     print output
@@ -88,25 +87,26 @@ def _fetch_gitignore(raw_name, directory=''):
     '''
     output = '\n#####=== %s ===#####\n' % raw_name
     if directory:
-        filepath = os.path.join(DATA_DIR, '%s' % directory + '/' + raw_name + \
-                                                 '.gitignore')
+        filepath = os.path.join(DATA_DIR, '%s/%s.gitignore' %
+                                (directory, raw_name))
     else:
         filepath = os.path.join(DATA_DIR, raw_name + '.gitignore')
         output += '\n'
     try:
-        with open(filepath) as f:
-            output += f.read()
+        with open(filepath) as gitignore:
+            output += gitignore.read()
         return output
     except IOError:
         return _fetch_gitignore(raw_name, 'Global')
 
 
 def main():
+    '''joe generates .gitignore files from the command line for you'''
     arguments = docopt(__doc__, version=__version__)
 
-    if (arguments['ls'] or arguments['list']):
+    if arguments['ls'] or arguments['list']:
         _print_filenames()
-    elif (arguments['NAME']):
+    elif arguments['NAME']:
         _handle_gitignores(arguments['NAME'])
     else:
         print __doc__
