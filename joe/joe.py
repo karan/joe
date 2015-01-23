@@ -70,12 +70,12 @@ def _walk_gitignores():
         for f in files:
             if f.endswith('.gitignore'):
                 raw_name = f.replace('.gitignore', '')
-                _gitignores[raw_name.lower()] = colored(raw_name, 'blue')
+                _gitignores[raw_name.lower()] = {'filename': raw_name, 'displayname': colored(raw_name, 'blue')}
     for root, subFolder, files in os.walk(get_share_folder()):
         for f in files:
             if f.endswith('.gitignore'):
                 raw_name = f.replace('.gitignore', '')
-                _gitignores[raw_name.lower()] = colored(raw_name + '*', 'green')
+                _gitignores[raw_name.lower()] = {'filename': raw_name, 'displayname': colored(raw_name + '*', 'green')}
 
     return sorted(_gitignores.items(), key=operator.itemgetter(0))
 
@@ -85,9 +85,9 @@ DATA_DIR = _get_data_dir('*.gitignore')
 SHARED_DATA_DIR = get_share_folder()
 # Load up names for all gitignore files
 GITIGNORE_RAW = _walk_gitignores()
-GITIGNORE = [filename for filename,displayname in GITIGNORE_RAW]
-GITIGNORE_DISPLAY = [displayname.lower() for filename,displayname in GITIGNORE_RAW]
-
+GITIGNORE_INDEX = [raw_name for raw_name,gitignore in GITIGNORE_RAW] #The gitignore name, lowercased
+GITIGNORE_FILES = [gitignore['filename'] for raw_name,gitignore in GITIGNORE_RAW] #The gitignore name, as in the file
+GITIGNORE_DISPLAY = [gitignore['displayname'].lower() for raw_name,gitignore in GITIGNORE_RAW] #The gitignore name
 
 def _print_filenames():
     '''List all available .gitignore files.'''
@@ -99,7 +99,8 @@ def _handle_gitignores(names):
     output = '#### joe made this: https://goel.io/joe\n'
     for name in names:
         try:
-            (raw_name, display_name) = GITIGNORE_RAW[GITIGNORE.index(name.lower())]
+            gitignore_index = GITIGNORE_INDEX.index(name)
+            raw_name = GITIGNORE_FILES[gitignore_index]
         except ValueError:
             print ('Uh oh! Seems like joe doesn\'t know what %s is.\n'
                    'Try running `joe ls` to see list of available gitignore '
@@ -119,7 +120,7 @@ def _fetch_gitignore(raw_name, directory=''):
     directory must then be checked as string operations such as
         string + None return ''
     '''
-    output = '\n#####=== %s ===#####\n' % raw_name
+    output = '\n#####=== %s ===#####\n' % raw_name.lower()
     custom_filepath = os.path.join(SHARED_DATA_DIR, raw_name + '.gitignore')
     if directory:
         filepath = os.path.join(DATA_DIR, '%s/%s.gitignore' %
