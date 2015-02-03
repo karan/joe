@@ -62,7 +62,7 @@ def _print_filenames():
 
 def _handle_gitignores(names):
     '''Generates and sends the gitignore contents to stdout.'''
-    output = '#### joe made this: https://goel.io/joe\n'
+    output = '#### joe made this: https://karan.github.io/joe/ ####\n'
     for name in names:
         try:
             raw_name = GITIGNORE_RAW[GITIGNORE.index(name.lower())]
