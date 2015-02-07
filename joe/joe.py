@@ -75,8 +75,10 @@ def _handle_gitignores(names):
         sys.stderr.write((
             'joe doesn\'t know the following gitignores:'
             '\n%s\n'
-            'Try running `joe ls` to see list of available gitignores.\n'
+            'Run `joe ls` to see list of available gitignores.\n'
         ) % "\n".join(failed))
+        output = []
+
     return output
 
 
