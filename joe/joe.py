@@ -24,6 +24,7 @@ Options:
 
 
 import os
+import sys
 
 from docopt import docopt
 
@@ -55,24 +56,28 @@ GITIGNORE_RAW = _walk_gitignores()
 GITIGNORE = [filename.lower() for filename in GITIGNORE_RAW]
 
 
-def _print_filenames():
+def _get_filenames():
     '''List all available .gitignore files.'''
-    print ', '.join(GITIGNORE)
+    return ', '.join(GITIGNORE)
 
 
 def _handle_gitignores(names):
-    '''Generates and sends the gitignore contents to stdout.'''
+    '''Generates and returns the gitignore contents.'''
     output = '#### joe made this: https://goel.io/joe\n'
+    failed = []
     for name in names:
         try:
             raw_name = GITIGNORE_RAW[GITIGNORE.index(name.lower())]
+            output += _fetch_gitignore(raw_name)
         except ValueError:
-            print ('Uh oh! Seems like joe doesn\'t know what %s is.\n'
-                   'Try running `joe ls` to see list of available gitignore '
-                   'files.') % name
-            break
-        output += _fetch_gitignore(raw_name)
-    print output
+            failed.append(name)
+    if failed:
+        sys.stderr.write((
+            'joe doesn\'t know the following gitignores:'
+            '\n%s\n'
+            'Try running `joe ls` to see list of available gitignores.\n'
+        ) % "\n".join(failed))
+    return output
 
 
 def _fetch_gitignore(raw_name, directory=''):
@@ -105,11 +110,11 @@ def main():
     arguments = docopt(__doc__, version=__version__)
 
     if arguments['ls'] or arguments['list']:
-        _print_filenames()
+        print(_get_filenames())
     elif arguments['NAME']:
-        _handle_gitignores(arguments['NAME'])
+        print(_handle_gitignores(arguments['NAME']))
     else:
-        print __doc__
+        print(__doc__)
 
 
 if __name__ == '__main__':
