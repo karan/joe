@@ -64,21 +64,24 @@ Overwrite existing ``.gitignore`` file
 
 .. code:: bash
 
-    $ joe java > .gitignore    # saves a new .gitignore file for java
+    $ joe java --save        # saves a new .gitignore file for java
+    $ joe java > .gitignore  # does the same thing
 
 Append to existing ``.gitignore`` file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-    $ joe java >> .gitignore    # appends to an existing .gitignore file
+    $ joe java --append    # appends to an existing .gitignore file
+    $ joe java >> .gitignore  # does the same thing
 
 Multiple languages
 ~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-    $ joe java node osx > .gitignore    # saves a new .gitignore file for multiple languages
+    $ joe java node osx --save        # saves a new .gitignore file for multiple languages
+    $ joe java node osx > .gitignore  # does the same thing
 
 Create and append to a global .gitignore file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,7 +93,8 @@ otherwise.
 .. code:: bash
 
     $ git config --global core.excludesfile ~/.gitignore # Optional if you have not yet created a global .gitignore
-    $ joe OSX SublimeText >> ~/.gitignore
+    $ joe OSX SublimeText --append -o ~/.gitignore
+    $ joe OSX SublimeText >> ~/.gitignore  # does the same thing as the line above
 
 List all available files
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -134,7 +138,8 @@ and its output wherever a SCM is used.
 
 .. code:: bash
 
-    $ joe java > .hgignore
+    $ joe java --save -o .hgignore
+    $ joe java > .hgignore  # does the same thing
 
 Contributing
 ------------
