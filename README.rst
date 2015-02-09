@@ -1,5 +1,5 @@
 .. figure:: http://i.imgur.com/y8g506n.png?1
-   :alt: 
+   :alt: logo
 
 joe
 ===
@@ -8,7 +8,7 @@ A ``.gitignore`` magician in your command line. Joe generates
 ``.gitignore`` files from the command line for you.
 
 .. figure:: http://i.imgur.com/ghmJLUP.gif
-   :alt: 
+   :alt: usage gif
 
 Features
 --------
@@ -16,7 +16,7 @@ Features
 -  Written in uncomplicated Python
 -  Easy to `install <https://github.com/karan/joe#installation>`__
 -  Stupidly `easy to use <https://github.com/karan/joe#usage>`__
--  Supports all Github-supported ```.gitignore``
+-  Supports all Github-supported `.gitignore
    files <https://github.com/karan/joe#list-all-available-files>`__
 -  Works on Mac, Linux and Windows
 -  Supports other version control systems (``.hgignore``)
@@ -140,13 +140,13 @@ Contributing
 ------------
 
 Bug Reports & Feature Requests
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please use the `issue tracker <https://github.com/karan/joe/issues>`__
 to report any bugs or file feature requests.
 
 Developing
-^^^^^^^^^^
+~~~~~~~~~~
 
 PRs are welcome. To begin developing, do this:
 
@@ -158,7 +158,7 @@ PRs are welcome. To begin developing, do this:
     $ python joe/joe.py java
 
 ``tool.sh``
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 This is a handly script that automates a lot of developing steps.
 
@@ -190,3 +190,4 @@ Make sure you have a file ``.pypirc`` in ``~/`` in the following format:
     repository: https://testpypi.python.org/pypi
     username: <<>>
     password: <<>>
+
