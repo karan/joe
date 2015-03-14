@@ -63,7 +63,7 @@ def _get_filenames():
 
 def _handle_gitignores(names):
     '''Generates and returns the gitignore contents.'''
-    output = '#### joe made this: https://goel.io/joe\n'
+    output = '#### joe made this: http://goel.io/joe\n'
     failed = []
     for name in names:
         try:
