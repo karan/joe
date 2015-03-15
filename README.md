@@ -51,19 +51,22 @@ $ joe java    # outputs .gitignore file for java to stdout
 ### Overwrite existing `.gitignore` file
 
 ```bash
-$ joe java > .gitignore    # saves a new .gitignore file for java
+$ joe java --save        # saves a new .gitignore file for java
+$ joe java > .gitignore  # does the same thing
 ```
 
 ### Append to existing `.gitignore` file
 
 ```bash
-$ joe java >> .gitignore    # appends to an existing .gitignore file
+$ joe java --append       # appends to an existing .gitignore file
+$ joe java >> .gitignore  # does the same thing
 ```
 
 ### Multiple languages
 
 ```bash
-$ joe java node osx > .gitignore    # saves a new .gitignore file for multiple languages
+$ joe java node osx --save        # saves a new .gitignore file for multiple languages
+$ joe java node osx > .gitignore  # does the same thing
 ```
 
 ### Create and append to a global .gitignore file
@@ -72,7 +75,8 @@ You can also use joe to append to a global .gitignore. These can be helpful when
 
 ```bash
 $ git config --global core.excludesfile ~/.gitignore # Optional if you have not yet created a global .gitignore
-$ joe OSX SublimeText >> ~/.gitignore
+$ joe OSX SublimeText --append -o ~/.gitignore
+$ joe OSX SublimeText >> ~/.gitignore  # does the same thing as the line above
 ```
 
 ### List all available files
@@ -90,7 +94,8 @@ Output:
 Joe isn't **just** a generator for `.gitignore` files. You can use it and its output wherever a SCM is used.
 
 ```bash
-$ joe java > .hgignore
+$ joe java --save -o .hgignore
+$ joe java > .hgignore  # does the same thing
 ```
 
 ## Contributing

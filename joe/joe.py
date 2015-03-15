@@ -12,13 +12,20 @@ joe generates .gitignore files from the command line for you
 
 Usage:
   joe (ls | list)
-  joe [NAME...]
-  joe (-h | --help)
+  joe NAME ...
+  joe NAME ... (-a | --append | -s | --save) [-o FILE]
+  joe [-h | --help]
   joe --version
 
+Arguments:
+  NAME ...    Names of gitignore collections
+
 Options:
-  -h --help     Show this screen.
-  --version     Show version.
+  -a --append    Append to FILE
+  -h --help      Show this screen
+  -o FILE        Output file for appending/saving [default: .gitignore]
+  -s --save      Save to FILE
+  --version      Show version
 
 """
 
@@ -77,8 +84,6 @@ def _handle_gitignores(names):
             '\n%s\n'
             'Run `joe ls` to see list of available gitignores.\n'
         ) % "\n".join(failed))
-        output = []
-
     return output
 
 
@@ -114,7 +119,18 @@ def main():
     if arguments['ls'] or arguments['list']:
         print(_get_filenames())
     elif arguments['NAME']:
-        print(_handle_gitignores(arguments['NAME']))
+        output = _handle_gitignores(arguments['NAME'])
+        mode = None
+        if arguments['--save']:
+            mode = 'w'
+        elif arguments['--append']:
+            mode = 'a'
+        if mode:
+            filepath = arguments['-o']
+            with open(filepath, mode) as gitignore:
+                gitignore.write(output)
+        else:
+            print(output)
     else:
         print(__doc__)
 
