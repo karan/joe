@@ -27,6 +27,7 @@ import os
 import sys
 
 from docopt import docopt
+from difflib import get_close_matches
 
 
 __version__ = '0.0.6'
@@ -72,13 +73,20 @@ def _handle_gitignores(names):
         except ValueError:
             failed.append(name)
     if failed:
-        sys.stderr.write((
-            'joe doesn\'t know the following gitignores:'
-            '\n%s\n'
-            'Run `joe ls` to see list of available gitignores.\n'
-        ) % "\n".join(failed))
-        output = []
+	matches = []
+	for name in failed:
+	    matches = get_close_matches(name, GITIGNORE)
+	if matches:
+	    sys.stderr.write((
+            'joe thinks you could mean:' '\n%s\n' ) % "\n".join(matches))
+	else:
+	    sys.stderr.write((
+		'joe doesn\'t know the following gitignores:'
+		'\n%s\n'
+		'Run `joe ls` to see list of available gitignores.\n'
+		) % "\n".join(failed))
 
+        output = []
     return output
 
 
