@@ -12,6 +12,7 @@ function usage {
     $ $tool readme    Generate README.rst from README.md
     $ $tool test      Upload release to testpypi
     $ $tool prod      Upload release to prod pypi
+    $ $tool update    Updates .gitignore files
 EOF
   exit 1;
 }
@@ -46,6 +47,8 @@ elif [ "$1" == "prod" ]; then
   readme
   # build and upload package to prod pypi
   python setup.py sdist upload -r pypi
+elif [ "$1" == "update" ]; then
+  git submodule foreach git pull origin master
 else
   usage;
 fi

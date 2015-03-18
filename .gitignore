@@ -5,6 +5,9 @@ __pycache__/
 # C extensions
 *.so
 
+# .gitignore repo
+joe/data
+
 # Distribution / packaging
 .Python
 env/
