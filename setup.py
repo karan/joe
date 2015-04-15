@@ -24,7 +24,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'joe=joe.joe:main'
+            'gi=joe.joe:main'
         ],
     }
 )

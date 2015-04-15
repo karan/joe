@@ -11,10 +11,10 @@ r"""
 joe generates .gitignore files from the command line for you
 
 Usage:
-  joe (ls | list)
-  joe [NAME...]
-  joe (-h | --help)
-  joe --version
+  gi (ls | list)
+  gi [NAME...]
+  gi (-h | --help)
+  gi --version
 
 Options:
   -h --help     Show this screen.
