@@ -111,7 +111,7 @@ def _fetch_gitignore(raw_name, directory=''):
 
 def _search_gitignore(search_string):
     '''Searches and returns all matching .gitignore files.'''
-    matches = filter(lambda x: search_string.lower() in x,GITIGNORE)
+    matches = filter(lambda x: search_string.lower() in x, GITIGNORE)
     if matches:
         return ', '.join(matches)
     else:
