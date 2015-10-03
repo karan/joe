@@ -113,9 +113,11 @@ def _search_gitignore(search_string):
     '''Searches and returns all matching .gitignore files.'''
     matches = filter(lambda x: search_string.lower() in x, GITIGNORE)
     if matches:
-        return ', '.join(matches)
+        output = ', '.join(matches)
     else:
         sys.stderr.write(('No matches found for: \n%s\n') % search_string)
+        output = []
+    return output
 
 
 def main():
