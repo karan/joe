@@ -113,17 +113,17 @@ def _prettyprint(words, padding=3):
     '''Returns the given list tabulated and with capital letter headerwords
     NOTE: the given list of words must be already sorted
     '''
-    termheight, termwidth = os.popen('stty size', 'r').read().split()
+    _, termwidth = os.popen('stty size', 'r').read().split()
     width = len(max(words, key=len)) + padding
     table = []
-    headerwords=[]
+    headerwords = []
     lastchar = ""
-    for w in words:
-        if not lastchar or lastchar != w[0]:
-            lastchar = w[0]
-            headerwords.append("-" * (width / 2 - 3) + " " +
-                lastchar.upper() + " "  + "-" * (width / 2 - 2))
-        headerwords.append(w)
+    for word in words:
+        if not lastchar or lastchar != word[0]:
+            lastchar = word[0]
+            headerwords.append("%s %s %s" % ("-" * (width / 2 - 3),
+                               lastchar.upper(), "-" * (width / 2 - 2)))
+        headerwords.append(word)
     ncols = max(1, int(termwidth) // width)
     nrows = (len(headerwords) - 1) // ncols + 1
     for i in xrange(nrows):
@@ -131,6 +131,7 @@ def _prettyprint(words, padding=3):
         format_str = ('%%-%ds' % width) * len(row)
         table.append(format_str % tuple(row))
     return '\n'.join(table)
+
 
 def main():
     '''joe generates .gitignore files from the command line for you'''
