@@ -13,12 +13,14 @@ joe generates .gitignore files from the command line for you
 Usage:
   joe (ls | list)
   joe [NAME...]
+  joe [-search STRING]
   joe (-h | --help)
   joe --version
 
 Options:
-  -h --help     Show this screen.
-  --version     Show version.
+  -s, --search STRING   Search for matching .gitignore files
+  -h --help             Show this screen.
+  --version             Show version.
 
 """
 
@@ -107,17 +109,29 @@ def _fetch_gitignore(raw_name, directory=''):
         return _fetch_gitignore(raw_name, 'Global')
 
 
+def _search_gitignore(search_string):
+    '''Searches and returns all matching .gitignore files.'''
+    matches = filter(lambda x: search_string.lower() in x, GITIGNORE)
+    if matches:
+        output = ', '.join(matches)
+    else:
+        sys.stderr.write(('No matches found for: \n%s\n') % search_string)
+        output = []
+    return output
+
+
 def main():
     '''joe generates .gitignore files from the command line for you'''
     arguments = docopt(__doc__, version=__version__)
 
     if arguments['ls'] or arguments['list']:
         print(_get_filenames())
+    elif arguments['--search']:
+        print(_search_gitignore(arguments['--search']))
     elif arguments['NAME']:
         print(_handle_gitignores(arguments['NAME']))
     else:
         print(__doc__)
-
 
 if __name__ == '__main__':
     main()
