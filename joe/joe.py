@@ -11,7 +11,7 @@ r"""
 joe generates .gitignore files from the command line for you
 
 Usage:
-  joe (ls | list)
+  joe (ls | list)[-p | --pretty]
   joe [NAME...]
   joe (-h | --help)
   joe --version
@@ -56,8 +56,10 @@ GITIGNORE_RAW = _walk_gitignores()
 GITIGNORE = [filename.lower() for filename in GITIGNORE_RAW]
 
 
-def _get_filenames():
+def _get_filenames(pretty=False):
     '''List all available .gitignore files.'''
+    if pretty:
+        return _prettyprint(GITIGNORE)
     return ', '.join(GITIGNORE)
 
 
@@ -107,12 +109,39 @@ def _fetch_gitignore(raw_name, directory=''):
         return _fetch_gitignore(raw_name, 'Global')
 
 
+def _prettyprint(words, padding=3):
+    '''Returns the given list tabulated and with capital letter headerwords
+    NOTE: the given list of words must be already sorted
+    '''
+    _, termwidth = os.popen('stty size', 'r').read().split()
+    width = len(max(words, key=len)) + padding
+    table = []
+    headerwords = []
+    lastchar = ""
+    for word in words:
+        if not lastchar or lastchar != word[0]:
+            lastchar = word[0]
+            headerwords.append("%s %s %s" % ("-" * (width / 2 - 3),
+                               lastchar.upper(), "-" * (width / 2 - 2)))
+        headerwords.append(word)
+    ncols = max(1, int(termwidth) // width)
+    nrows = (len(headerwords) - 1) // ncols + 1
+    for i in xrange(nrows):
+        row = headerwords[i::nrows]
+        format_str = ('%%-%ds' % width) * len(row)
+        table.append(format_str % tuple(row))
+    return '\n'.join(table)
+
+
 def main():
     '''joe generates .gitignore files from the command line for you'''
     arguments = docopt(__doc__, version=__version__)
 
     if arguments['ls'] or arguments['list']:
-        print(_get_filenames())
+        if arguments['-p'] or arguments["--pretty"]:
+            print(_get_filenames(pretty=True))
+        else:
+            print(_get_filenames())
     elif arguments['NAME']:
         print(_handle_gitignores(arguments['NAME']))
     else:
