@@ -58,7 +58,7 @@ GITIGNORE = [filename.lower() for filename in GITIGNORE_RAW]
 
 def _get_filenames():
     '''List all available .gitignore files.'''
-    return ', '.join(GITIGNORE)
+    return '\n'.join(GITIGNORE)
 
 
 def _handle_gitignores(names):
