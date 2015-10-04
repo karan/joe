@@ -26,8 +26,11 @@ Options:
 import os
 import sys
 
-from docopt import docopt
-
+try:
+    from docopt import docopt
+except ImportError:
+    print("joe: Please install python-docopt.");
+    sys.exit(1)
 
 __version__ = '0.0.6'
 
