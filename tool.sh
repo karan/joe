@@ -4,6 +4,8 @@
 function usage {
   local tool=$(basename $0)
   cat <<EOF
+  NOTE: 
+    This is deprecated in favor of Make.
 
   USAGE:
     $ $tool [-h|--help] COMMAND
