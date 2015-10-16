@@ -1,0 +1,24 @@
+# bash completion for joe                                  -*- shell-script -*-
+
+_joe()
+{
+    local cur prev opts names
+
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-h --help --version"
+    names=""
+
+    if [[ ${opts} == *${prev}* ]]; then
+        return 1
+    elif [[ ${cur} == -* ]]; then
+        COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+        return 0
+    else
+        names=$(joe ls | tr -d ,)
+        COMPREPLY=($(compgen -W "${names}" -- ${cur}))
+        return 0
+    fi
+}
+complete -F _joe joe
