@@ -27,6 +27,8 @@ import os
 import sys
 
 from docopt import docopt
+from pycheckupdate import is_outdated, PackageNotInstalled
+from pycheckupdate.utils import get_pip_install_cmd
 
 
 __version__ = '0.0.6'
@@ -109,6 +111,14 @@ def _fetch_gitignore(raw_name, directory=''):
 
 def main():
     '''joe generates .gitignore files from the command line for you'''
+
+    try:
+        if is_outdated('joe'):
+            cmd = get_pip_install_cmd('joe')
+            print('''You are using an outdated version of joe. Please upgrade using {0}'''.format(cmd))
+    except PackageNotInstalled:
+        pass
+
     arguments = docopt(__doc__, version=__version__)
 
     if arguments['ls'] or arguments['list']:

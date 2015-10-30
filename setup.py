@@ -21,6 +21,7 @@ setup(
     },
     install_requires=[
         'docopt>=0.6.1',
+        'pycheckupdate>=0.12.1'
     ],
     entry_points={
         'console_scripts': [
