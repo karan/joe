@@ -20,9 +20,7 @@ A `.gitignore` magician in your command line. Joe generates `.gitignore` files f
 ### Option 1: Homebrew
 
 ```bash
-$ brew update
-$ brew tap karan/karan
-$ brew install gitignore
+$ brew install karan/karan/gitignore
 ```
 
 ### Option 2: [Pip](https://pypi.python.org/pypi/joe)

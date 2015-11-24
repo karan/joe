@@ -29,9 +29,7 @@ Option 1: Homebrew
 
 .. code:: bash
 
-    $ brew update
-    $ brew tap karan/karan
-    $ brew install gitignore
+    $ brew install karan/karan/gitignore
 
 Option 2: `Pip <https://pypi.python.org/pypi/joe>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
