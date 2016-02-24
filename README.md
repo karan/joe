@@ -41,11 +41,18 @@ $ python setup.py install
 
 ## Usage
 
-### Basic usage
+After install, make sure to run `joe update`. This will download all `.gitignore` files in `~/joe-data/` folder.
 
+### Basic usage
 
 ```bash
 $ joe java    # outputs .gitignore file for java to stdout
+```
+
+To update your `.gitignore` files at any time, simply run:
+
+```bash
+$ joe update
 ```
 
 ### Overwrite existing `.gitignore` file
