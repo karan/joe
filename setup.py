@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 
-version = '0.0.5'
+version = '0.0.6'
 
 setup(
     name='joe',
@@ -16,11 +16,9 @@ setup(
     keywords=['gitignore', 'git', 'github', 'command line', 'cli'],
     url='http://github.com/karan/joe',
     packages=find_packages(),
-    package_data={
-        'joe': ['data/*.gitignore', 'data/Global/*.gitignore']
-    },
     install_requires=[
         'docopt>=0.6.1',
+        'GitPython==1.0.2',
     ],
     entry_points={
         'console_scripts': [
