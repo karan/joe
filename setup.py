@@ -24,5 +24,15 @@ setup(
         'console_scripts': [
             'joe=joe.joe:main'
         ],
-    }
+    },
+    classifiers=(
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.1',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4'
+    )
 )
