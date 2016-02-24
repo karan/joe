@@ -110,7 +110,7 @@ PRs are welcome. To begin developing, do this:
 
 ```bash
 # make virtual env
-$ git clone --recursive git@github.com:karan/joe.git
+$ git clone --recursive https://github.com/karan/joe
 $ cd joe/
 $ python joe/joe.py java
 ```
