@@ -32,7 +32,7 @@ from docopt import docopt
 import git
 
 
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 
 # Where all gitignore files are

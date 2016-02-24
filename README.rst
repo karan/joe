@@ -52,12 +52,21 @@ Option 3: From source
 Usage
 -----
 
+After install, make sure to run ``joe update``. This will download all
+``.gitignore`` files in ``~/joe-data/`` folder.
+
 Basic usage
 ~~~~~~~~~~~
 
 .. code:: bash
 
     $ joe java    # outputs .gitignore file for java to stdout
+
+To update your ``.gitignore`` files at any time, simply run:
+
+.. code:: bash
+
+    $ joe update
 
 Overwrite existing ``.gitignore`` file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
