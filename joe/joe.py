@@ -75,7 +75,7 @@ def _update():
     repo = git.Repo.init(_DATA_DIR_PATH)
     origin = repo.create_remote('origin', REMOTE_URL)
     origin.fetch()
-    origin.pull(origin.refs[0].remote_head)
+    origin.pull('master')
     return 'Done'
 
 
