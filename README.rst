@@ -13,8 +13,9 @@ A ``.gitignore`` magician in your command line. Joe generates
 Features
 --------
 
--  Written in uncomplicated Python
--  Easy to `install <https://github.com/karan/joe#installation>`__
+-  Written in uncomplicated Go (Golang)
+-  No installation necessary - just use the
+   `binary <https://github.com/karan/joe#installation>`__.
 -  Stupidly `easy to use <https://github.com/karan/joe#usage>`__
 -  Supports all Github-supported ```.gitignore``
    files <https://github.com/karan/joe#list-all-available-files>`__

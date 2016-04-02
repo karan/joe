@@ -12,7 +12,7 @@ A `.gitignore` magician in your command line. Joe generates `.gitignore` files f
 - No installation necessary - just use the [binary](https://github.com/karan/joe#installation).
 - Stupidly [easy to use](https://github.com/karan/joe#usage)
 - Supports all Github-supported [`.gitignore` files](https://github.com/karan/joe#list-all-available-files)
-- Works on Mac, Linux and Windows
+- Works on Mac, Linux and (maybe) Windows
 - Supports other version control systems (`.hgignore`)
 
 ## Installation
