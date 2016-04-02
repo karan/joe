@@ -4,7 +4,7 @@
 
 A `.gitignore` magician in your command line. Joe generates `.gitignore` files from the command line for you.
 
-![](http://i.imgur.com/ghmJLUP.gif)
+![](http://i.imgur.com/2tAksHG.gif)
 
 ## Features
 
@@ -125,7 +125,6 @@ USAGE:
     $ $tool [-h|--help] COMMAND
 
   EXAMPLES:
-    $ $tool readme    Generate README.rst from README.md
     $ $tool deps      Install dependencies for joe
     $ $tool build     Build a binary
     $ $tool run       Build and run the binary
