@@ -26,7 +26,7 @@ function readme {
 
 function build {
   readme
-  go build joe.go
+  go build joe.go utils.go
   printf 'joe built\n';
 }
 
