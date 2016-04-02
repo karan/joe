@@ -8,67 +8,68 @@ A `.gitignore` magician in your command line. Joe generates `.gitignore` files f
 
 ## Features
 
-- Written in uncomplicated Python
-- Easy to [install](https://github.com/karan/joe#installation)
+- Written in uncomplicated Go (Golang)
+- No installation necessary - just use the [binary](https://github.com/karan/joe#installation).
 - Stupidly [easy to use](https://github.com/karan/joe#usage)
 - Supports all Github-supported [`.gitignore` files](https://github.com/karan/joe#list-all-available-files)
-- Works on Mac, Linux and Windows
+- Works on Mac, Linux and (maybe) Windows
 - Supports other version control systems (`.hgignore`)
 
 ## Installation
 
-### Option 1: Homebrew
+After install, make sure to run `joe u`. This will download all `.gitignore` files in `~/joe-data/` folder.
+
+### Option 1: Binary
+
+Download the latest binary from the [Releases page](https://github.com/karan/joe/releases). It's the easiest way to get started with `joe`.
+
+### Option 2: From source
 
 ```bash
-$ brew install karan/karan/gitignore
-```
-
-### Option 2: [Pip](https://pypi.python.org/pypi/joe)
-
-```bash
-$ pip install joe
-```
-
-### Option 3: From source
-
-```bash
-$ git clone --recursive git@github.com:karan/joe.git
+$ git clone git@github.com:karan/joe.git
 $ cd joe/
-$ python setup.py install
+$ chmod +x tool.sh
+$ ./tool.sh build
 ```
 
 ## Usage
 
-After install, make sure to run `joe update`. This will download all `.gitignore` files in `~/joe-data/` folder.
+### Commands:
+
+```
+ls | list       list all available files
+u | update      update all available gitignore files
+g | generate    generate gitignore files
+```
 
 ### Basic usage
 
 ```bash
-$ joe java    # outputs .gitignore file for java to stdout
+$ joe g java    # outputs .gitignore file for java to stdout
 ```
 
 To update your `.gitignore` files at any time, simply run:
 
 ```bash
-$ joe update
+$ joe u
 ```
 
 ### Overwrite existing `.gitignore` file
 
 ```bash
-$ joe java > .gitignore    # saves a new .gitignore file for java
+$ joe g java > .gitignore    # saves a new .gitignore file for java
 ```
 
 ### Append to existing `.gitignore` file
 
 ```bash
-$ joe java >> .gitignore    # appends to an existing .gitignore file
+$ joe g java >> .gitignore    # appends to an existing .gitignore file
 ```
 
 ### Multiple languages
 
 ```bash
-$ joe java node osx > .gitignore    # saves a new .gitignore file for multiple languages
+$ joe g java,node,osx > .gitignore    # saves a new .gitignore file for multiple languages
 ```
 
 ### Create and append to a global .gitignore file
@@ -77,7 +78,7 @@ You can also use joe to append to a global .gitignore. These can be helpful when
 
 ```bash
 $ git config --global core.excludesfile ~/.gitignore # Optional if you have not yet created a global .gitignore
-$ joe OSX SublimeText >> ~/.gitignore
+$ joe g OSX,SublimeText >> ~/.gitignore
 ```
 
 ### List all available files
@@ -95,7 +96,7 @@ Output:
 Joe isn't **just** a generator for `.gitignore` files. You can use it and its output wherever a SCM is used.
 
 ```bash
-$ joe java > .hgignore
+$ joe g java > .hgignore
 ```
 
 ## Contributing
@@ -109,40 +110,23 @@ Please use the [issue tracker](https://github.com/karan/joe/issues) to report an
 PRs are welcome. To begin developing, do this:
 
 ```bash
-# make virtual env
-$ git clone --recursive git@github.com:karan/joe.git
+$ git clone git@github.com:karan/joe.git
 $ cd joe/
-$ python joe/joe.py java
+$ go run *.go
 ```
 
 #### `tool.sh`
 
-This is a handly script that automates a lot of developing steps.
+This is a handy script that automates a lot of developing steps.
 
 
 ```bash
 USAGE:
-  $ tool.sh [-h|--help] COMMAND
+    $ $tool [-h|--help] COMMAND
 
-EXAMPLES:
-  $ tool.sh readme    Generate README.rst from README.md
-  $ tool.sh test      Upload release to testpypi
-  $ tool.sh prod      Upload release to prod pypi
+  EXAMPLES:
+    $ $tool readme    Generate README.rst from README.md
+    $ $tool deps      Install dependencies for joe
+    $ $tool build     Build a binary
+    $ $tool run       Build and run the binary
 ```
-
-Make sure you have a file `.pypirc` in `~/` in the following format:
-
-    [distutils]
-    index-servers =
-        pypi
-        pypitest
-
-    [pypi]
-    repository: https://pypi.python.org/pypi
-    username: <<>>
-    password: <<>>
-
-    [pypitest]
-    repository: https://testpypi.python.org/pypi
-    username: <<>>
-    password: <<>>

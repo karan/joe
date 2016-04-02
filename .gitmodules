@@ -1,3 +1,0 @@
-[submodule "joe/data"]
-	path = joe/data
-	url = https://github.com/github/gitignore.git
