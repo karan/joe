@@ -10,8 +10,9 @@ function usage {
 
   EXAMPLES:
     $ $tool readme    Generate README.rst from README.md
-    $ $tool test      Upload release to testpypi
-    $ $tool prod      Upload release to prod pypi
+    $ $tool deps      Install dependencies for joe
+    $ $tool build     Build a binary
+    $ $tool run       Build and run the binary
 EOF
   exit 1;
 }
@@ -20,7 +21,13 @@ EOF
 # convert README.md to README.rst
 function readme {
   pandoc --from=markdown --to=rst --output=README.rst README.md
-  printf 'README.rst generated';
+  printf 'README.rst generated\n';
+}
+
+function build {
+  readme
+  go build joe.go
+  printf 'joe built\n';
 }
 
 
@@ -38,14 +45,12 @@ fi
 # show help for no arguments if stdin is a terminal
 if [ "$1" == "readme" ]; then
   readme
-elif [ "$1" == "test" ]; then
-  readme
-  # build and upload package to test pypi
-  python setup.py sdist upload -r pypitest
-elif [ "$1" == "prod" ]; then
-  readme
-  # build and upload package to prod pypi
-  python setup.py sdist upload -r pypi
+elif [ "$1" == "deps" ]; then
+  go get github.com/codegangsta/cli
+elif [ "$1" == "build" ]; then
+  build
+elif [ "$1" == "run" ]; then
+  build && ./joe
 else
   usage;
 fi
