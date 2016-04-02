@@ -19,74 +19,77 @@ Features
 -  Stupidly `easy to use <https://github.com/karan/joe#usage>`__
 -  Supports all Github-supported ```.gitignore``
    files <https://github.com/karan/joe#list-all-available-files>`__
--  Works on Mac, Linux and Windows
+-  Works on Mac, Linux and (maybe) Windows
 -  Supports other version control systems (``.hgignore``)
 
 Installation
 ------------
 
-Option 1: Homebrew
-~~~~~~~~~~~~~~~~~~
+After install, make sure to run ``joe u``. This will download all
+``.gitignore`` files in ``~/joe-data/`` folder.
 
-.. code:: bash
+Option 1: Binary
+~~~~~~~~~~~~~~~~
 
-    $ brew install karan/karan/gitignore
+Download the latest binary from the `Releases
+page <https://github.com/karan/joe/releases>`__. It's the easiest way to
+get started with ``joe``.
 
-Option 2: `Pip <https://pypi.python.org/pypi/joe>`__
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code:: bash
-
-    $ pip install joe
-
-Option 3: From source
+Option 2: From source
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-    $ git clone --recursive git@github.com:karan/joe.git
+    $ git clone git@github.com:karan/joe.git
     $ cd joe/
-    $ python setup.py install
+    $ chmod +x tool.sh
+    $ ./tool.sh build
 
 Usage
 -----
 
-After install, make sure to run ``joe update``. This will download all
-``.gitignore`` files in ``~/joe-data/`` folder.
+Commands:
+~~~~~~~~~
+
+::
+
+    ls | list       list all available files
+    u | update      update all available gitignore files
+    g | generate    generate gitignore files
 
 Basic usage
 ~~~~~~~~~~~
 
 .. code:: bash
 
-    $ joe java    # outputs .gitignore file for java to stdout
+    $ joe g java    # outputs .gitignore file for java to stdout
 
 To update your ``.gitignore`` files at any time, simply run:
 
 .. code:: bash
 
-    $ joe update
+    $ joe u
 
 Overwrite existing ``.gitignore`` file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-    $ joe java > .gitignore    # saves a new .gitignore file for java
+    $ joe g java > .gitignore    # saves a new .gitignore file for java
 
 Append to existing ``.gitignore`` file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-    $ joe java >> .gitignore    # appends to an existing .gitignore file
+    $ joe g java >> .gitignore    # appends to an existing .gitignore file
 
 Multiple languages
 ~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-    $ joe java node osx > .gitignore    # saves a new .gitignore file for multiple languages
+    $ joe g java,node,osx > .gitignore    # saves a new .gitignore file for multiple languages
 
 Create and append to a global .gitignore file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,7 +101,7 @@ otherwise.
 .. code:: bash
 
     $ git config --global core.excludesfile ~/.gitignore # Optional if you have not yet created a global .gitignore
-    $ joe OSX SublimeText >> ~/.gitignore
+    $ joe g OSX,SublimeText >> ~/.gitignore
 
 List all available files
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,7 +145,7 @@ and its output wherever a SCM is used.
 
 .. code:: bash
 
-    $ joe java > .hgignore
+    $ joe g java > .hgignore
 
 Contributing
 ------------
@@ -160,41 +163,22 @@ PRs are welcome. To begin developing, do this:
 
 .. code:: bash
 
-    # make virtual env
-    $ git clone --recursive git@github.com:karan/joe.git
+    $ git clone git@github.com:karan/joe.git
     $ cd joe/
-    $ python joe/joe.py java
+    $ go run *.go
 
 ``tool.sh``
 ^^^^^^^^^^^
 
-This is a handly script that automates a lot of developing steps.
+This is a handy script that automates a lot of developing steps.
 
 .. code:: bash
 
     USAGE:
-      $ tool.sh [-h|--help] COMMAND
+        $ $tool [-h|--help] COMMAND
 
-    EXAMPLES:
-      $ tool.sh readme    Generate README.rst from README.md
-      $ tool.sh test      Upload release to testpypi
-      $ tool.sh prod      Upload release to prod pypi
-
-Make sure you have a file ``.pypirc`` in ``~/`` in the following format:
-
-::
-
-    [distutils]
-    index-servers =
-        pypi
-        pypitest
-
-    [pypi]
-    repository: https://pypi.python.org/pypi
-    username: <<>>
-    password: <<>>
-
-    [pypitest]
-    repository: https://testpypi.python.org/pypi
-    username: <<>>
-    password: <<>>
+      EXAMPLES:
+        $ $tool readme    Generate README.rst from README.md
+        $ $tool deps      Install dependencies for joe
+        $ $tool build     Build a binary
+        $ $tool run       Build and run the binary
