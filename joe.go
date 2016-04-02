@@ -44,6 +44,35 @@ func availableFiles() (a []string, err error) {
   return availableGitignores, nil
 }
 
+func generate(args string) {
+  names := strings.Split(args, ",")
+
+  availableGitignores, err := availableFiles()
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  notFound := []string{}
+  output := "#### joe made this: http://goel.io/joe\n"
+  for _, name := range names {
+    if stringInSlice(name, availableGitignores) {
+      bytes, err2 := ioutil.ReadFile(path.Join(dataPath, name + ".gitignore"))
+      if err != nil {
+        log.Fatal(err2)
+      }
+      output += string(bytes)
+    } else {
+      notFound = append(notFound, name)
+    }
+  }
+  if len(notFound) > 0 {
+    fmt.Printf("Unsupported files: %s\n", strings.Join(notFound, ", "))
+    fmt.Println("Run `joe ls` to see list of available gitignores.")
+    output = ""
+  }
+  fmt.Println(output)
+}
+
 func main() {
   app := cli.NewApp()
   app.Name = joe
@@ -88,8 +117,7 @@ func main() {
         if c.NArg() != 1 {
           cli.ShowAppHelp(c)
         } else {
-          fmt.Println("generating shit")
-          fmt.Println(c.Args()[0])
+          generate(c.Args()[0])
         }
       },
     },
