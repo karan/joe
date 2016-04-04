@@ -41,6 +41,17 @@ func availableFiles() (a []string, err error) {
 			availableGitignores = append(availableGitignores, strings.Replace(f.Name(), ".gitignore", "", 1))
 		}
 	}
+
+	files, err = ioutil.ReadDir(path.Join(dataPath, "Global"))
+	if err != nil {
+		return nil, err
+	}
+	for _, f := range files {
+		if strings.HasSuffix(f.Name(), ".gitignore") {
+			availableGitignores = append(availableGitignores, strings.Replace(f.Name(), ".gitignore", "", 1))
+		}
+	}
+
 	return availableGitignores, nil
 }
 
@@ -57,9 +68,17 @@ func generate(args string) {
 	for _, name := range names {
 		if stringInSlice(name, availableGitignores) {
 			bytes, err2 := ioutil.ReadFile(path.Join(dataPath, name+".gitignore"))
-			if err != nil {
-				log.Fatal(err2)
+			if err2 == nil {
+				output += "#### "+name+" ####"
+				output += string(bytes)
+				continue
 			}
+			bytes, err3 := ioutil.ReadFile(path.Join(dataPath, "Global", name+".gitignore"))
+			if err3 != nil {
+				log.Fatal(err2)
+				log.Fatal(err3)
+			}
+			output += "#### "+name+" ####"
 			output += string(bytes)
 		} else {
 			notFound = append(notFound, name)
