@@ -40,7 +40,7 @@ func findGitignores() (a map[string]string, err error) {
 	filelist := make(map[string]string)
 	filepath.Walk(dataPath, func (filepath string, info os.FileInfo, err error) error {
 		if strings.HasSuffix(info.Name(), ".gitignore") {
-			name := strings.Replace(info.Name(), ".gitignore", "", 1)
+			name := strings.ToLower(strings.Replace(info.Name(), ".gitignore", "", 1))
 			filelist[name] = filepath
 		}
 		return nil
@@ -73,7 +73,7 @@ func generate(args string) {
 	notFound := []string{}
 	output := ""
 	for _, name := range names {
-		if filepath, ok := gitignores[name]; ok {
+		if filepath, ok := gitignores[strings.ToLower(name)]; ok {
 			fmt.Println(name + " " +filepath)
 			bytes, err := ioutil.ReadFile(filepath)
 			if err == nil {
