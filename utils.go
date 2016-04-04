@@ -7,6 +7,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"github.com/termie/go-shutil"
 )
 
 func unzip(archive, target string) (err error) {
@@ -47,11 +48,6 @@ func unzip(archive, target string) (err error) {
 }
 
 func DownloadFiles(url string, dataPath string) (err error) {
-	dirErr := os.MkdirAll(dataPath, 0777)
-	if dirErr != nil {
-		return dirErr
-	}
-
 	archivePath := path.Join("/tmp", "master.zip")
 
 	// Create the file
@@ -80,7 +76,7 @@ func DownloadFiles(url string, dataPath string) (err error) {
 		return err
 	}
 
-	err = os.Rename(path.Join("/tmp", "gitignore-master"), dataPath)
+	err = shutil.CopyTree(path.Join("/tmp", "gitignore-master"), dataPath, nil)
 	if err != nil {
 		return err
 	}
@@ -107,6 +103,10 @@ func RemoveContents(dir string) (err error) {
 		if err != nil {
 			return err
 		}
+	}
+	err = os.Remove(dir)
+	if err != nil {
+	    return err
 	}
 	return nil
 }
