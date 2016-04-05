@@ -7,7 +7,9 @@ import (
 	"log"
 	"os"
 	"path"
+	"path/filepath"
 	"strings"
+	"sort"
 )
 
 const joe string = `
@@ -29,46 +31,68 @@ const dataDir string = ".joe-data"
 
 var dataPath = path.Join(os.Getenv("HOME"), dataDir)
 
+func findGitignores() (a map[string]string, err error) {
+	_, err = ioutil.ReadDir(dataPath)
+	if err != nil {
+		return nil, err
+	}
+
+	filelist := make(map[string]string)
+	filepath.Walk(dataPath, func (filepath string, info os.FileInfo, err error) error {
+		if strings.HasSuffix(info.Name(), ".gitignore") {
+			name := strings.ToLower(strings.Replace(info.Name(), ".gitignore", "", 1))
+			filelist[name] = filepath
+		}
+		return nil
+	})
+	return filelist, nil
+}
+
 func availableFiles() (a []string, err error) {
-	files, err := ioutil.ReadDir(dataPath)
+	gitignores, err := findGitignores()
 	if err != nil {
 		return nil, err
 	}
 
 	availableGitignores := []string{}
-	for _, f := range files {
-		if strings.HasSuffix(f.Name(), ".gitignore") {
-			availableGitignores = append(availableGitignores, strings.Replace(f.Name(), ".gitignore", "", 1))
-		}
+	for key, _ := range gitignores {
+		availableGitignores = append(availableGitignores, key)
 	}
+
 	return availableGitignores, nil
 }
 
 func generate(args string) {
 	names := strings.Split(args, ",")
 
-	availableGitignores, err := availableFiles()
+	gitignores, err := findGitignores()
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	notFound := []string{}
-	output := "#### joe made this: http://goel.io/joe\n"
+	output := ""
 	for _, name := range names {
-		if stringInSlice(name, availableGitignores) {
-			bytes, err2 := ioutil.ReadFile(path.Join(dataPath, name+".gitignore"))
-			if err != nil {
-				log.Fatal(err2)
+		if filepath, ok := gitignores[strings.ToLower(name)]; ok {
+			fmt.Println(name + " " +filepath)
+			bytes, err := ioutil.ReadFile(filepath)
+			if err == nil {
+				output += "#### " + name + " ####\n"
+				output += string(bytes)
+				continue
 			}
-			output += string(bytes)
 		} else {
 			notFound = append(notFound, name)
 		}
 	}
+
 	if len(notFound) > 0 {
 		fmt.Printf("Unsupported files: %s\n", strings.Join(notFound, ", "))
 		fmt.Println("Run `joe ls` to see list of available gitignores.")
 		output = ""
+	}
+	if len(output) > 0 {
+		output = "#### joe made this: http://goel.io/joe\n" + output
 	}
 	fmt.Println(output)
 }
@@ -90,7 +114,8 @@ func main() {
 					log.Fatal(err)
 				}
 				fmt.Printf("%d supported .gitignore files:\n", len(availableGitignores))
-				fmt.Printf("%s", strings.Join(availableGitignores, ", "))
+				sort.Strings(availableGitignores)
+				fmt.Printf("%s\n", strings.Join(availableGitignores, ", "))
 			},
 		},
 		{
