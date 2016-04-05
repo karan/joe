@@ -2,12 +2,12 @@ package main
 
 import (
 	"archive/zip"
+	"github.com/termie/go-shutil"
 	"io"
 	"net/http"
 	"os"
 	"path"
 	"path/filepath"
-	"github.com/termie/go-shutil"
 )
 
 func unzip(archive, target string) (err error) {
@@ -106,7 +106,7 @@ func RemoveContents(dir string) (err error) {
 	}
 	err = os.Remove(dir)
 	if err != nil {
-	    return err
+		return err
 	}
 	return nil
 }

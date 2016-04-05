@@ -8,8 +8,8 @@ import (
 	"os"
 	"path"
 	"path/filepath"
-	"strings"
 	"sort"
+	"strings"
 )
 
 const joe string = `
@@ -38,7 +38,7 @@ func findGitignores() (a map[string]string, err error) {
 	}
 
 	filelist := make(map[string]string)
-	filepath.Walk(dataPath, func (filepath string, info os.FileInfo, err error) error {
+	filepath.Walk(dataPath, func(filepath string, info os.FileInfo, err error) error {
 		if strings.HasSuffix(info.Name(), ".gitignore") {
 			name := strings.ToLower(strings.Replace(info.Name(), ".gitignore", "", 1))
 			filelist[name] = filepath
@@ -74,7 +74,6 @@ func generate(args string) {
 	output := ""
 	for _, name := range names {
 		if filepath, ok := gitignores[strings.ToLower(name)]; ok {
-			fmt.Println(name + " " +filepath)
 			bytes, err := ioutil.ReadFile(filepath)
 			if err == nil {
 				output += "#### " + name + " ####\n"
