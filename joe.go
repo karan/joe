@@ -123,18 +123,20 @@ func main() {
 			Name:    "s",
 			Aliases: []string{"search"},
 			Usage:   "search all available files",
-			Action: func(c *cli.Context) {
+			Action: func(c *cli.Context) error {
 				if c.NArg() != 1 {
 					cli.ShowAppHelp(c)
 				} else {
 					availableGitignores, err := availableFiles()
 					if err != nil {
 						log.Fatal(err)
+						return err
 					}
 					results := Search(availableGitignores, c.Args()[0])
 					sort.Strings(results)
 					fmt.Printf("%s\n", strings.Join(results, ", "))
 				}
+				return nil
 			},
 		},
 		{
