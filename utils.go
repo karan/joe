@@ -8,6 +8,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"strings"
 )
 
 func unzip(archive, target string) (err error) {
@@ -118,4 +119,20 @@ func stringInSlice(a string, list []string) bool {
 		}
 	}
 	return false
+}
+
+func Filter(vs []string, f func(string) bool) []string {
+	filtered := make([]string, 0)
+	for _, v := range vs {
+		if f(v) {
+			filtered = append(filtered, v)
+		}
+	}
+	return filtered
+}
+
+func Search(names []string, query string) []string {
+	return Filter(names, func(str string) bool {
+		return strings.Contains(str, query)
+	})
 }
