@@ -107,21 +107,43 @@ func main() {
 			Name:    "ls",
 			Aliases: []string{"list"},
 			Usage:   "list all available files",
-			Action: func(c *cli.Context) {
+			Action: func(c *cli.Context) error {
 				availableGitignores, err := availableFiles()
 				if err != nil {
 					log.Fatal(err)
+					return err
 				}
 				fmt.Printf("%d supported .gitignore files:\n", len(availableGitignores))
 				sort.Strings(availableGitignores)
 				fmt.Printf("%s\n", strings.Join(availableGitignores, ", "))
+				return nil
+			},
+		},
+		{
+			Name:    "s",
+			Aliases: []string{"search"},
+			Usage:   "search all available files",
+			Action: func(c *cli.Context) error {
+				if c.NArg() != 1 {
+					cli.ShowAppHelp(c)
+				} else {
+					availableGitignores, err := availableFiles()
+					if err != nil {
+						log.Fatal(err)
+						return err
+					}
+					results := Search(availableGitignores, c.Args()[0])
+					sort.Strings(results)
+					fmt.Printf("%s\n", strings.Join(results, ", "))
+				}
+				return nil
 			},
 		},
 		{
 			Name:    "u",
 			Aliases: []string{"update"},
 			Usage:   "update all available gitignore files",
-			Action: func(c *cli.Context) {
+			Action: func(c *cli.Context) error {
 				fmt.Println("Updating gitignore files..")
 				err := RemoveContents(dataPath)
 				if err != nil {
@@ -130,19 +152,22 @@ func main() {
 				err = DownloadFiles(gitignoreUrl, dataPath)
 				if err != nil {
 					log.Fatal(err)
+					return err
 				}
+				return nil
 			},
 		},
 		{
 			Name:    "g",
 			Aliases: []string{"generate"},
 			Usage:   "generate gitignore files",
-			Action: func(c *cli.Context) {
+			Action: func(c *cli.Context) error {
 				if c.NArg() != 1 {
 					cli.ShowAppHelp(c)
 				} else {
 					generate(c.Args()[0])
 				}
+				return nil
 			},
 		},
 	}
