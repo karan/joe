@@ -21,7 +21,11 @@ After install, make sure to run `joe u`. This will download all `.gitignore` fil
 
 ### Option 1: Binary
 
+`joe` is available for OSX (macOS), Linux and Windows.
+
 Download the latest binary from the [Releases page](https://github.com/karan/joe/releases). It's the easiest way to get started with `joe`.
+
+Make sure to add the location of the binary to your `$PATH`.
 
 ### Option 2: From source
 
