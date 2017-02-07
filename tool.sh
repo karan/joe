@@ -18,7 +18,12 @@ EOF
 
 
 function build {
-  go build -o build/joe joe.go utils.go
+  GOOS=windows GOARCH=386 go build -o build/joe-x86.exe joe.go utils.go
+  GOOS=windows GOARCH=amd64 go build -o build/joe.exe joe.go utils.go
+  GOOS=linux GOARCH=386 go build -o build/joe-x86 joe.go utils.go
+  GOOS=linux GOARCH=amd64 go build -o build/joe joe.go utils.go
+  GOOS=darwin GOARCH=386 go build -o build/joe-darwin-x86 joe.go utils.go
+  GOOS=darwin GOARCH=amd64 go build -o build/joe-darwin joe.go utils.go
   printf 'joe built\n';
 }
 
