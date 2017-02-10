@@ -85,6 +85,19 @@ $ git config --global core.excludesfile ~/.gitignore # Optional if you have not 
 $ joe g OSX,SublimeText >> ~/.gitignore
 ```
 
+### Enable Bash Auto Completion
+
+You can enable bash autocompletion by keeping below line in your bash startup script `~/.bash_profile` or `~/.bashrc`.
+
+```bash
+$ source /path/to/bash_autocompletion
+```
+Try Auto Completion by using below Command
+
+```bash
+$ joe [TAB] [TAB]
+```
+
 ### List all available files
 
 ```bash
