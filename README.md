@@ -36,6 +36,13 @@ $ chmod +x tool.sh
 $ ./tool.sh build
 ```
 
+If you use this method with Debian/Ubuntu and derivates you can use checkinstall to track down the package for easy removal.
+
+```bash
+$ sudo checkinstall --pkgname joe python setup.py install
+$ dpkg -r joe # this uninstalls joe
+```
+
 ## Usage
 
 ### Commands:
