@@ -1,0 +1,8 @@
+title: joe
+description: A .gitignore magician in your command line
+google_analytics: UA-9509587-21
+show_downloads: true
+theme: jekyll-theme-dinky
+
+gems:
+  - jekyll-mentions
