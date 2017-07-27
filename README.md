@@ -33,6 +33,7 @@ Make sure to add the location of the binary to your `$PATH`.
 $ git clone git@github.com:karan/joe.git
 $ cd joe/
 $ chmod +x tool.sh
+$ go get github.com/codegangsta/cli
 $ ./tool.sh build
 ```
 
