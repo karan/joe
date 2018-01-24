@@ -29,12 +29,24 @@ Make sure to add the location of the binary to your `$PATH`.
 
 ### Option 2: From source
 
+Make sure you have [Go](https://golang.org/doc/install) installed.
+Install the dependencies first
+
+```bash
+$ go get -v github.com/codegangsta/cli
+$ go get -v github.com/termie/go-shutil
+```
+
+and then compile from sources
+
 ```bash
 $ git clone git@github.com:karan/joe.git
 $ cd joe/
 $ chmod +x tool.sh
 $ ./tool.sh build
 ```
+Add resulting executable to your `$PATH` or copy it to any of existing `bin` directories (e.g. for Linux
+`sudo cp joe /usr/local/bin`)
 
 ## Usage
 
