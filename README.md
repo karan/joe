@@ -17,7 +17,7 @@ A `.gitignore` magician in your command line. Joe generates `.gitignore` files f
 
 ## Installation
 
-After install, make sure to run `joe u`. This will download all `.gitignore` files in `~/joe-data/` folder.
+After install, make sure to run `joe u`. This will download all `.gitignore` files in `~/.joe-data/` folder.
 
 ### Option 1: Binary
 
