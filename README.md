@@ -30,10 +30,18 @@ Make sure to add the location of the binary to your `$PATH`.
 ### Option 2: From source
 
 ```bash
-$ git clone git@github.com:karan/joe.git
+$ git clone https://github.com/karan/joe.git
 $ cd joe/
 $ chmod +x tool.sh
 $ ./tool.sh build
+$ cd ~/bin
+$ sudo ln -s /path/to/joe/build/joe joe
+```
+
+### Option 3: Pip
+
+```bash
+$ pip install joe
 ```
 
 ## Usage

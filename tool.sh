@@ -46,7 +46,7 @@ if [ "$1" == "deps" ]; then
 elif [ "$1" == "build" ]; then
   build
 elif [ "$1" == "run" ]; then
-  build && ./joe
+  build && ./build/joe
 else
   usage;
 fi
