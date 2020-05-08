@@ -2,8 +2,10 @@
 
 
 function usage {
-  local tool=$(basename $0)
-  cat <<EOF
+  local tool
+  tool=$(basename "$0")
+
+  cat <<EOF >/dev/stderr
 
   USAGE:
     $ $tool [-h|--help] COMMAND
@@ -28,8 +30,8 @@ function build {
 }
 
 
-# total arguments should be 1
-if [ $# -ne 1 ]; then
+# allow maximum of 1 argument for all subcommands except run
+if [ $# -ne 1 ] && [ "$1" != "run" ]; then
    usage;
 fi
 
@@ -41,12 +43,38 @@ fi
 
 # show help for no arguments if stdin is a terminal
 if [ "$1" == "deps" ]; then
-  go get github.com/codegangsta/cli
+  go get github.com/urfave/cli
   go get github.com/termie/go-shutil
 elif [ "$1" == "build" ]; then
   build
 elif [ "$1" == "run" ]; then
-  build && ./joe
+  # default to linux-amd64
+  joe_path=joe
+  target="$(go env GOOS)-$(go env GOARCH)"
+
+  # select executable targeted for current host environment
+  case "${target}" in
+    windows-386)
+      joe_path=joe-x86.exe
+      ;;
+    windows-amd64)
+      joe_path=joe.exe
+      ;;
+    linux-386)
+      joe_path=joe-x86
+      ;;
+    linux-amd64)
+      joe_path=joe
+      ;;
+    darwin-386)
+      joe_path=joe-darwin-x86
+      ;;
+    darwin-amd64)
+      joe_path=joe-darwin
+      ;;
+  esac
+
+  build && ./build/${joe_path} "${@:2}"
 else
   usage;
 fi
