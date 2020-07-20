@@ -9,8 +9,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/codegangsta/cli"
 	homedir "github.com/mitchellh/go-homedir"
+	"github.com/urfave/cli"
 )
 
 const joe string = `
