@@ -122,7 +122,7 @@ func main() {
 	app.Usage = "generate .gitignore files from the command line"
 	app.UsageText = "joe command [arguments...]"
 	app.Version = version
-	app.Commands = []*cli.Command{
+	app.Commands = []cli.Command{
 		{
 			Name:    "ls",
 			Aliases: []string{"list"},
