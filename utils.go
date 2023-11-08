@@ -78,7 +78,7 @@ func downloadFiles(url string, dataPath string) error {
 		return err
 	}
 
-	err = shutil.CopyTree(filepath.Join(tmpDir, "gitignore-master"), dataPath, nil)
+	err = shutil.CopyTree(filepath.Join(tmpDir, "gitignore-main"), dataPath, nil)
 	if err != nil {
 		return err
 	}

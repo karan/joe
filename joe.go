@@ -2,14 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
 
-	homedir "github.com/mitchellh/go-homedir"
 	"github.com/urfave/cli"
 )
 
@@ -39,17 +37,16 @@ var (
 )
 
 func init() {
-	home, err := homedir.Dir()
+	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	homeDir = home
 	dataPath = filepath.Join(homeDir, dataDir)
 }
 
 func findGitignores() (a map[string]string, err error) {
-	_, err = ioutil.ReadDir(dataPath)
+	_, err = os.ReadDir(dataPath)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +88,7 @@ func generate(args string) {
 	output := ""
 	for index, name := range names {
 		if filepath, ok := gitignores[strings.ToLower(name)]; ok {
-			bytes, err := ioutil.ReadFile(filepath)
+			bytes, err := os.ReadFile(filepath)
 			if err == nil {
 				output += "\n#### " + name + " ####\n"
 				output += string(bytes)
