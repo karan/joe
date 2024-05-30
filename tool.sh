@@ -41,7 +41,11 @@ fi
 
 # show help for no arguments if stdin is a terminal
 if [ "$1" == "deps" ]; then
-  go get github.com/codegangsta/cli
+  [[ ! -f "go.mod" ]] \
+      && go mod init urfave/cli \
+      && go mod init termie/go-shutil
+
+  go get github.com/urfave/cli
   go get github.com/termie/go-shutil
 elif [ "$1" == "build" ]; then
   build

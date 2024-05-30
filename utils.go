@@ -48,7 +48,7 @@ func unzip(archive, target string) (err error) {
 }
 
 func DownloadFiles(url string, dataPath string) (err error) {
-	archivePath := path.Join("/tmp", "master.zip")
+	archivePath := path.Join("/tmp", "gitignore-main.zip")
 
 	// Create the file
 	out, err := os.Create(archivePath)
@@ -76,7 +76,7 @@ func DownloadFiles(url string, dataPath string) (err error) {
 		return err
 	}
 
-	err = shutil.CopyTree(path.Join("/tmp", "gitignore-master"), dataPath, nil)
+	err = shutil.CopyTree(path.Join("/tmp", "gitignore-main"), dataPath, nil)
 	if err != nil {
 		return err
 	}

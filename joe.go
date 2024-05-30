@@ -2,7 +2,7 @@ package main
 
 import (
   "fmt"
-  "github.com/codegangsta/cli"
+  "github.com/urfave/cli"
   "io/ioutil"
   "log"
   "os"
@@ -25,8 +25,8 @@ const joe string = `
 ▐░░░░░░░▌    ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
  ▀▀▀▀▀▀▀      ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ 
 `
-const version string = "1.0.0"
-const gitignoreUrl = "https://github.com/github/gitignore/archive/master.zip"
+const version string = "1.0.1"
+const gitignoreUrl = "https://github.com/github/gitignore/archive/refs/heads/main.zip"
 const dataDir string = ".joe-data"
 
 var dataPath = path.Join(os.Getenv("HOME"), dataDir)
