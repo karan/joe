@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -32,18 +33,9 @@ const (
 )
 
 var (
-	homeDir  string
-	dataPath string
+  userHome, _ = os.UserHomeDir()
+  dataPath    = path.Join(userHome, dataDir)
 )
-
-func init() {
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	dataPath = filepath.Join(homeDir, dataDir)
-}
 
 func findGitignores() (a map[string]string, err error) {
 	_, err = os.ReadDir(dataPath)
